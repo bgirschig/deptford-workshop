@@ -1,0 +1,28 @@
+{
+  "name": "deptfordWorkshop",
+  "version": "0.0.0",
+  "description": "preparation for the workshop by marcKremmers in deptford's registration summer school",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "workshop",
+    "kremmers",
+    "3d",
+    "three.js"
+  ],
+  "author": "bastien girschig",
+  "license": "ISC",
+  "devDependencies": {
+    "coffee": "0.0.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.11.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1"
+  },
+  "dependencies": {
+    "simplex-noise": "^2.1.1",
+    "three": "^0.68.0"
+  }
+}
