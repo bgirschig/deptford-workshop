@@ -26,7 +26,6 @@ class window.SoundParticle extends Particle
 		@soundBuffer = e
 		@sound = SoundHandler.createSound(@soundBuffer)
 		@sound.source.start(0)
-		console.log @sound.source
 
 	update: =>
 		pos = new THREE.Vector3();

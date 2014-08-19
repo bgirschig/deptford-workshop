@@ -39,9 +39,9 @@ module.exports = function(grunt){
 		    files: [
 		      {src: ['source/index.html'], dest: '../build/index.html', filter: 'isFile'},
 		      {src: ['source/style.css'], dest: '../build/style.css', filter: 'isFile'},
-		      {src: ['source/coffee/classes/noise.js'], dest: '../build/script/noise.js', filter: 'isFile'},
-		      {src: ['node_modules/three/three.min.js'], dest: '../build/script/three.min.js', filter: 'isFile'},
+		      {src: ['node_modules/three/three.min.js'], dest: '../build/script/librairies/three.min.js', filter: 'isFile'},
 		      {expand: true, cwd: '../assets/', src: ['**'], dest: '../build/assets/'},
+		      {expand: true, cwd: 'source/librairies/', src: ['**'], dest: '../build/script/librairies/'},
 		    ]
 		  }
 		}

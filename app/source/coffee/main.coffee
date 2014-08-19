@@ -5,7 +5,7 @@ init = ()->
 	window.scene = new Scene()
 	scene.update()
 
-Utils.loadJson( 'assets/objectImages/data.json', init);
+Utils.loadJson( 'assets/data.json', init);
 
 # video = document.querySelector("#videoElement")
  

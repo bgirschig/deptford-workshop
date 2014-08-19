@@ -4,7 +4,7 @@ window.Settings = {
 	camOffset: 100
 
 	# counts
-	particlesCount: 1000
+	particlesCount: 3000
 	soundParticlesCount: 2
 	
 	# forces
