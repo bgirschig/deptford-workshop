@@ -37,7 +37,7 @@ class window.Particle extends THREE.Object3D
 		# reset acceleration for next pass
 		@acceleration.set(0,0,0)
 
-	reposition: =>
+	reposition: () =>
 		@position.copy(Particle.getRandomVector()) #FIXME
 		@speed.set(0,0,0)
 

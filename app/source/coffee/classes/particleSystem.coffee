@@ -24,4 +24,7 @@ class window.ParticleSystem extends THREE.Object3D
 		if @count > 0 || @soundCount > 0
 			setTimeout(@addParticle, 5)
 		else if @count == 0 && @soundCount == 0
-			console.log "loading done"
+			document.getElementById('loader').className = "hide";
+			document.getElementById('logo').className = "";
+			document.getElementById('options').className = "";
+			document.getElementById('aboutDiv').className = "";

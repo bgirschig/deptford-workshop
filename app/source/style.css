@@ -1,23 +1,188 @@
 canvas { width: 100%; height: 100%; margin:0; padding:0;position: absolute;top: 0;left: 0}
-body { margin:0; padding:0; position: relative;}
-#loader{
-	width: 100px; height: 100px; background-color: rgba(0,0,0,0.3);border-radius: 100px;color: white;
-	text-align: center; font: 15px sans-serif; line-height: 100px;
-	margin-top: -50%;
+.hide{display: none;}
+
+body {
+	width: 100%;height: 100%;
+	margin:0;padding:0;
+	background: url("assets/ui/bg.jpg");
+	background-size: cover;
+	color: white;
+	-webkit-transform: translate3d(0, 0, 0);
+	position: fixed;
+}
+#ui{
+	padding: 0 0 10px 0;
+	min-width: 100%;
+	min-height: 100%;
+	background-color: rgba(0,0,0,0.2);
+}
+#loader{ top: 0px; width: 100%;height: 100%}
+#loader img{
+    position: absolute;
+    top: 30px;left: 30px;
+    width: 30px;height: 30px;
+    margin: -15px;
+    padding: 0;
+	-webkit-animation: rotate 1s infinite linear;
+}
+#loader h1{
+	text-align: center;
+	position: relative;
+	top: 40%;
+	-ms-transform: translate(-2vw, -50%) rotate(-20deg);
+   	-webkit-transform: translate(-2vw, -50%)rotate(-20deg);
+    transform: translate(-2vw, -50%)rotate(-20deg);
+	font-size: 6.1em;
+	color: white;
+	letter-spacing: 10px;
+}
+#loader h1 i{
+	color: rgb(218, 22, 30);
+}
+
+	#logo{
+		float: left;
+		font-size: 23px;
+		color: white;
+		font-family: AlbertusMTStd, georgia, serif;
+		letter-spacing: 0.1em;
+		padding:30px;
+	}
+	#options{
+		float: right;
+		font-size: 19px;
+		color: white;
+		font-family: UniversLTPro-BoldCond, Impact;
+		padding:30px;
+		text-transform: uppercase;
+	}
+	#options a, #options .link{
+		color: white;
+		display: block;
+		float: right;
+		margin: 0 8px 10px 8px;
+		text-decoration: none;
+		border-bottom: 1px solid white; 
+		letter-spacing: 0.05em;
+		cursor: pointer;
+	}
+	#options .link iframe, #options .link a{
+		display: none;
+	}
+	#options .link:hover iframe[style]{
+		display: inline;
+		width: 75px;
+	}
+	#options .link:hover span{
+		display: none;
+	}
+	#options .link:hover{
+		border-bottom: none;
+		margin-right: -20px;
+	}
+	#cta {
+		-webkit-animation: blink 1s infinite linear;
+	}
+	#logo span{
+		color: rgb(218, 22, 30);
+	}
+	#aboutDiv{
+		overflow: scroll;
+		width: 100%;
+		height: calc(100% - 94px);
+	}
+	#about, .details{
+		box-sizing:border-box;
+		width:100%;
+		float: left;
+		font-size: 32px;
+		font-family: AlbertusMTStd, georgia, serif;
+		color: rgb(218, 22, 30);
+		text-align: center;
+		letter-spacing: 0.08em;
+		padding:0 80px;
+	}
+	#about{
+		color: white;
+		margin-top:90px;
+	}
+	#about a, .details a{
+		color: white;
+		font-size: 14px;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		text-decoration: none;
+	}
+	#about a {
+		border: 1px solid white;
+		padding:5px;
+		display: inline;
+        vertical-align:middle;
+	}
+	#about a:hover{
+		color:white;
+		border-color: white;
+	}
+
+	.details {
+		font-size: 11px;
+		color: white;
+		letter-spacing: 0.1em;
+	}
+
+	.details a {
+		font-family: UniversLTPro-BoldCond, Impact;
+		color: white;
+	}
+
+#particleViewer{
+	width: 100%;
+	height: 100%;
+}
+#particleViewer img{
+	top: 50%;
+	left: 50%;
+	max-height: 60%;
+	position: relative;
 	margin: auto;
-	-webkit-animation: pulse 5s ease-in-out infinite;
-	 animation: pulse 5s ease-in-out infinite;
+	transform: translate(-50%,-50%);
 }
-@-webkit-keyframes pulse {
-	0%   {-webkit-transform: scale(1) translate(0,50vh);}
-	50%  {-webkit-transform: scale(3) translate(0,50vh);}
-	100% {-webkit-transform: scale(1) translate(0,50vh);}
+#particleViewer i{
+	color: white;
 }
-#videoElement{min-height: 100%;min-width: 100%;}
-#error{width: 300;margin: 50px auto 0 auto;background-color:rgba(100,100,100,0.8);padding: 20px 0 20px 0;font: 15px sans-serif;color: white;text-align: center;}
-#details{display: none; margin-top: 10px; padding:10px;background-color:rgba(100,100,100,0.6);font-size: 12px;line-height: 1.5}
-#error:active{padding-bottom: 0;}
-#error:active #details{display: block;}
-a{color: black; font-weight: bolder;text-decoration: none;}
-a:hover{color: gray;}
-i{color: black; font-style:normal;font-weight: bolder;}
+#particleViewer #streetviewBtn{
+	margin: auto;
+	color: white;
+	font: 10px UniversLTPro-BoldCond;
+	background-color: black;
+	text-align: center;
+	width: 200px;
+	height: 40px;
+	line-height: 40px;
+	padding: 10px;
+	outline: thin white solid;
+}
+#particleViewer #info{
+	box-sizing:border-box;
+	width:100%;
+	float: left;
+	font-size: 36px;
+	font-family: AlbertusMTStd, georgia, serif;
+	color: rgb(218, 22, 30);
+	text-align: center;
+	letter-spacing: 0.08em;
+	padding:0 80px;
+}
+@-webkit-keyframes rotate
+{
+    from{-webkit-transform:rotate(0deg);}
+    to{-webkit-transform:rotate(360deg);}
+}
+@-webkit-keyframes blink
+{
+	0%   {opacity: 1;}
+	50%	{opacity: 1;}
+    51%  {opacity: 0;}
+    99%	{opacity: 0;}
+    100% {opacity: 1;}
+}

@@ -2,10 +2,12 @@ class window.Scene
 	constructor: () ->
 		# 3d scene init
 		@scene = new THREE.Scene()
-		@camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 1500 );
-		@renderer = new THREE.WebGLRenderer({ alpha: true });
+		@camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 1500 )
+		@renderer = new THREE.WebGLRenderer({ alpha: true })
 		@renderer.setSize( window.innerWidth, window.innerHeight )
-		@renderer.setClearColor( Settings.bgColor, 0 );
+		@renderer.setClearColor( Settings.bgColor, 0 )
+		@renderer.domElement.className = "hide"
+		@renderer.domElement.id = "threeCanvas"
 		document.body.appendChild( @renderer.domElement )
 		@scene.fog = new THREE.FogExp2( Settings.fogColor, Settings.fogDensity )
 
@@ -33,8 +35,9 @@ class window.Scene
 		# @camera.rotation.x += (mouse.y/window.innerHeight - 0.5)/10
 		if @particleSystem.targetRotation
 			@particleSystem.rotation.y += (@particleSystem.targetRotation-@particleSystem.rotation.y)/10
+		
 		@particleSystem.rotation.y += (mouse.x/window.innerWidth - 0.5)/30
-		# @particleSystem.rotation.x += (mouse.y/window.innerHeight - 0.5)/10
+		if Settings.unlockCamAxis then @particleSystem.rotation.x += (mouse.y/window.innerHeight - 0.5)/30
 		# @camera.rotation.x += (mouse.y/window.innerHeight - 0.5)/5
 
 		requestAnimationFrame @update

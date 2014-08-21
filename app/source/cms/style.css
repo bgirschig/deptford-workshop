@@ -1,0 +1,38 @@
+body{
+	background-image: url("images/bg.jpg");
+	background-position: center;
+	background-size: cover;
+	font-family: sans-serif;
+	color: white;
+}
+#formLabels label,#formInputs input{
+	display: block;
+	margin: 5;padding: 0;
+}
+#formLabels{
+	width: 350px;
+	display: inline-block;
+}
+#formInputs{
+	display: inline-block;
+}
+#infoForm, #jpegForm, #preQuestions{
+	width: 610px;
+	margin: auto;
+	margin-top: 3%;
+	padding: 10px;
+	background: rgba(180, 180, 180, 0.7);
+	position: relative;
+}
+#preQuestions{
+	text-align: center;
+	line-height: 2em;
+}
+a{
+	color: inherit;
+	background: rgba(255, 255, 255, 0.4);
+	margin: 5px;
+	padding: 5px;
+	text-transform: uppercase;
+	text-decoration: none;
+}

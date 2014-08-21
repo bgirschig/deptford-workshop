@@ -9,7 +9,11 @@ module.exports = function(grunt){
 				},
 			},
 			copy:{
-				files: ['source/index.html', 'source/style.css', '../assets/objectImages/data.json', "../assets/_assets-update.txt"],
+				files: ['source/index.html',
+						'source/style.css',
+						'../assets/objectImages/data.json',
+						"../assets/_assets-update.txt",
+						'source/cms/**'],
 				tasks:['copy'],
 				options:{
 					livereload: true
@@ -40,8 +44,9 @@ module.exports = function(grunt){
 		      {src: ['source/index.html'], dest: '../build/index.html', filter: 'isFile'},
 		      {src: ['source/style.css'], dest: '../build/style.css', filter: 'isFile'},
 		      {src: ['node_modules/three/three.min.js'], dest: '../build/script/librairies/three.min.js', filter: 'isFile'},
-		      {expand: true, cwd: '../assets/', src: ['**'], dest: '../build/assets/'},
+		      // {expand: true, cwd: '../assets/', src: ['**'], dest: '../build/assets/'},
 		      {expand: true, cwd: 'source/librairies/', src: ['**'], dest: '../build/script/librairies/'},
+		      {expand: true, cwd: 'source/cms/', src: ['**'], dest: '../build/cms/'},
 		    ]
 		  }
 		}
