@@ -1,18 +1,16 @@
 window.Settings = {
 	#debug
-	debug: true
+	debug: false
 	camOffset: 100
 	unlockCamAxis: false
 
 	# counts
-	particlesCount: 0
-	soundParticlesCount: 2
+	particlesCount: 3000
+	soundParticlesCount: 0
 	
 	# forces
 	gravity: new THREE.Vector3(0, 0.0015 ,0)
 	dragCoef: 2
-	environmentInfluence: 0
-	noiseSize: 10
 	
 	# sound
 	soundPropagation: 0.5 # smaller number means sound fades away quicker with the distance
