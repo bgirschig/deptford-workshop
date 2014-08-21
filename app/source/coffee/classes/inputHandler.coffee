@@ -45,7 +45,10 @@ initOrientation = (e) ->
 		window.addEventListener("deviceorientation", setOrientation, false)
 
 start = () ->
-	scene.update()
+	if(!Settings.sceneStarted)
+		scene.update()
+		Settings.sceneStarted = true
+
 	document.getElementById('ui').className = "hide"
 	document.getElementById('aboutDiv').className = "hide"
 	document.getElementById('threeCanvas').className = ""

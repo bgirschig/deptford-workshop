@@ -28,3 +28,5 @@ class window.ParticleSystem extends THREE.Object3D
 			document.getElementById('logo').className = "";
 			document.getElementById('options').className = "";
 			document.getElementById('aboutDiv').className = "";
+
+		console.log @count

@@ -35,4 +35,6 @@ window.Settings = {
 
 	# optimisation
 	ratioSimplification: 1
+
+	sceneStarted: false
 }
