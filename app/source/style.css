@@ -15,15 +15,26 @@ body {
 	min-width: 100%;
 	min-height: 100%;
 	background-color: rgba(0,0,0,0.2);
+	position: absolute;
+	top: 0;
 }
 #loader{ top: 0px; width: 100%;height: 100%}
-#loader img{
+#loader #loaderImg{
     position: absolute;
     top: 30px;left: 30px;
     width: 30px;height: 30px;
     margin: -15px;
     padding: 0;
 	-webkit-animation: rotate 1s infinite linear;
+}
+#loader #map{
+	height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50% -50%) rotate(-20deg);
+   	-webkit-transform: translate(-50%, -50%)rotate(-20deg);
+    transform: translate(-50%, -50%)rotate(-20deg);
 }
 #loader h1{
 	text-align: center;
@@ -41,7 +52,8 @@ body {
 }
 
 	#logo{
-		float: left;
+		position: absolute;
+		left: 0;
 		font-size: 23px;
 		color: white;
 		font-family: AlbertusMTStd, georgia, serif;
@@ -49,7 +61,8 @@ body {
 		padding:30px;
 	}
 	#options{
-		float: right;
+		position: absolute;
+		right: 0;
 		font-size: 19px;
 		color: white;
 		font-family: UniversLTPro-BoldCond, Impact;
@@ -90,6 +103,7 @@ body {
 		overflow: scroll;
 		width: 100%;
 		height: calc(100% - 94px);
+		margin-top: 90px;
 	}
 	#about, .details{
 		box-sizing:border-box;
@@ -104,7 +118,6 @@ body {
 	}
 	#about{
 		color: white;
-		margin-top:90px;
 	}
 	#about a, .details a{
 		color: white;
@@ -140,38 +153,39 @@ body {
 	height: 100%;
 }
 #particleViewer img{
-	top: 50%;
-	left: 50%;
-	max-height: 60%;
-	position: relative;
-	margin: auto;
+	top: 50%;left: 50%;
+	height: 60%;max-width: 90%;
+	position: relative;margin: auto;
 	transform: translate(-50%,-50%);
-}
-#particleViewer i{
-	color: white;
 }
 #particleViewer #streetviewBtn{
 	margin: auto;
-	color: white;
-	font: 10px UniversLTPro-BoldCond;
 	background-color: black;
 	text-align: center;
-	width: 200px;
-	height: 40px;
-	line-height: 40px;
+	width: 100px;
+	height: 10px;
 	padding: 10px;
 	outline: thin white solid;
+}
+#particleViewer #streetviewBtn a{
+	color: white;
+	font: 12px UniversLTPro-BoldCond;
+	text-decoration: none;
 }
 #particleViewer #info{
 	box-sizing:border-box;
 	width:100%;
-	float: left;
-	font-size: 36px;
 	font-family: AlbertusMTStd, georgia, serif;
-	color: rgb(218, 22, 30);
 	text-align: center;
-	letter-spacing: 0.08em;
-	padding:0 80px;
+	position: absolute; bottom: 10px;
+	font-size: 12px;
+	line-height: 17px;
+}
+#particleViewer #info i, #particleViewer #info a{font-style:normal;color: white;text-decoration: none;}
+#particleViewer #streetviewBtn i{
+	margin-right: 3px;
+	font-size: 18px;
+	margin-top: -4px;
 }
 @-webkit-keyframes rotate
 {

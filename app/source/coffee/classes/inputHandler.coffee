@@ -3,23 +3,31 @@ window.mouse = {x: window.innerWidth/2, y: window.innerHeight/2}
 updateMouse = (e) ->
 	mouse.x = e.clientX
 	mouse.y = e.clientY
-onDocumentMouseDown = (e) -> 
-	projector = new THREE.Projector()
-	mouseVector = new THREE.Vector3()
+onDocumentMouseDown = (e) ->
+	if document.getElementById('ui').className == "hide"
+		projector = new THREE.Projector()
+		mouseVector = new THREE.Vector3()
 
-	e.preventDefault()
-	mouseVector.x = 2 * (e.clientX / window.innerWidth) - 1;
-	mouseVector.y = 1 - 2 * (e.clientY / window.innerHeight);
-	raycaster = projector.pickingRay( mouseVector.clone(), scene.camera );
-	intersects = raycaster.intersectObjects( scene.clickable, true );
-	if intersects.length > 0
-		ref = intersects[0].object.particleReference
-		if(!dataJson.images[ref].streetview?)
-			window.open("https://www.google.ch/maps/place/London",'_blank')
-		else
-			window.open(dataJson.images[ref].streetview, '_blank')
-	else if Settings.debug
-		scene.camera.position.z = Settings.camOffset - scene.camera.position.z
+		e.preventDefault()
+		mouseVector.x = 2 * (e.clientX / window.innerWidth) - 1
+		mouseVector.y = 1 - 2 * (e.clientY / window.innerHeight)
+		raycaster = projector.pickingRay( mouseVector.clone(), scene.camera )
+		intersects = raycaster.intersectObjects( scene.clickable, true )
+		if intersects.length > 0
+			ref = intersects[0].object.particleReference
+			document.getElementById("viewerDataTitle").innerHTML = dataJson.images[ref].particleName
+			document.getElementById("viewerDataName").innerHTML = dataJson.images[ref].contributorName
+			document.getElementById("viewerDataName").href = "http://"+dataJson.images[ref].contributorUrl
+			document.getElementById("viewerImg").src = "assets/objectImages/"+ref+".png"
+			if(!dataJson.images[ref].streetview?)
+				document.getElementById("streetviewLink").href = "https://www.google.ch/maps/place/London"
+			else
+				document.getElementById("streetviewLink").href = dataJson.images[ref].streetview
+			document.getElementById('ui').className = ""
+			document.getElementById('particleViewer').className = ""
+			document.getElementById('threeCanvas').className = "hide"
+		else if Settings.debug
+			scene.camera.position.z = Settings.camOffset - scene.camera.position.z
 
 setOrientation = (e) ->
 	document.removeEventListener( 'mousemove', updateMouse, false )
@@ -39,7 +47,7 @@ initOrientation = (e) ->
 start = () ->
 	scene.update()
 	document.getElementById('ui').className = "hide"
-	document.getElementById('about').className = "hide"
+	document.getElementById('aboutDiv').className = "hide"
 	document.getElementById('threeCanvas').className = ""
 
 
