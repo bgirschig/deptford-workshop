@@ -5,3 +5,5 @@ init = ()->
 	window.scene = new Scene()
 
 Utils.loadJson( 'assets/data.json', init);
+
+window.	overlayHandler = new OverlayHandler()

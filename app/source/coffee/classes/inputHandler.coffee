@@ -1,10 +1,13 @@
 window.mouse = {x: window.innerWidth/2, y: window.innerHeight/2}
 
+# ...
 updateMouse = (e) ->
 	mouse.x = e.clientX
 	mouse.y = e.clientY
+
+# click on a particle
 onDocumentMouseDown = (e) ->
-	if document.getElementById('ui').className == "hide"
+	if(Settings.sceneStarted && scene.displayed)
 		projector = new THREE.Projector()
 		mouseVector = new THREE.Vector3()
 
@@ -14,27 +17,20 @@ onDocumentMouseDown = (e) ->
 		raycaster = projector.pickingRay( mouseVector.clone(), scene.camera )
 		intersects = raycaster.intersectObjects( scene.clickable, true )
 		if intersects.length > 0
-			ref = intersects[0].object.particleReference
-			document.getElementById("viewerDataTitle").innerHTML = dataJson.images[ref].particleName
-			document.getElementById("viewerDataName").innerHTML = dataJson.images[ref].contributorName
-			document.getElementById("viewerDataName").href = "http://"+dataJson.images[ref].contributorUrl
-			document.getElementById("viewerImg").src = "assets/objectImages/"+ref+".png"
-			if(!dataJson.images[ref].streetview?)
-				document.getElementById("streetviewLink").href = "https://www.google.ch/maps/place/London"
-			else
-				document.getElementById("streetviewLink").href = dataJson.images[ref].streetview
-			document.getElementById('ui').className = ""
-			document.getElementById('particleViewer').className = ""
-			document.getElementById('threeCanvas').className = "hide"
+			overlayHandler.gotoSection(4)
+			overlayHandler.showParticle(intersects[0].object.particleReference)
+
 		else if Settings.debug
 			scene.camera.position.z = Settings.camOffset - scene.camera.position.z
 
+# only for orientation with sensors
 setOrientation = (e) ->
 	document.removeEventListener( 'mousemove', updateMouse, false )
 	document.removeEventListener( 'mousedown', onDocumentMouseDown, false )
 	alpha = e.alpha
 	scene.particleSystem.targetRotation = -e.alpha/180*Math.PI
 
+# recieves a null event if there are no sensors.
 initOrientation = (e) ->
 	window.removeEventListener("deviceorientation", initOrientation, false)
 
@@ -44,16 +40,30 @@ initOrientation = (e) ->
 	else
 		window.addEventListener("deviceorientation", setOrientation, false)
 
-start = () ->
-	if(!Settings.sceneStarted)
-		scene.update()
-		Settings.sceneStarted = true
-
-	document.getElementById('ui').className = "hide"
-	document.getElementById('aboutDiv').className = "hide"
-	document.getElementById('threeCanvas').className = ""
-
-
+# allows to determine if there are sensors that can be used for camera movements
 window.addEventListener("deviceorientation", initOrientation, false)
+ctas = document.getElementsByClassName("cta")
+for cta in ctas
+	cta.addEventListener("click", ()->
+		overlayHandler.gotoSection(3)
+	, false)
 
-document.getElementById('cta').onclick = start
+# adjust viewport when window is resized
+onWindowResize = ()->
+    scene.camera.aspect = window.innerWidth / window.innerHeight;
+    scene.camera.updateProjectionMatrix();
+    scene.renderer.setSize( window.innerWidth, window.innerHeight );
+window.addEventListener 'resize', onWindowResize, false
+
+# shortcuts
+shorcutHandler = (e)->
+	switch e.keyCode
+		when 39 # right arrow
+			overlayHandler.nextParticle()
+		when 37 # left arrow
+			overlayHandler.prevParticle()
+		when 27 # esc
+			overlayHandler.gotoSection(3)
+		when 32 # space
+			overlayHandler.gotoSection(4)
+window.addEventListener("keyup", shorcutHandler)

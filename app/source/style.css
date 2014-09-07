@@ -30,7 +30,7 @@ body {
 #loader #map{
 	height: 100%;
 	position: absolute;
-	top: 50%;
+	top: 255%;
 	left: 50%;
 	-ms-transform: translate(-50% -50%) rotate(-20deg);
    	-webkit-transform: translate(-50%, -50%)rotate(-20deg);
@@ -46,107 +46,110 @@ body {
 	font-size: 6.1em;
 	color: white;
 	letter-spacing: 10px;
+	font-family: AlbertusMTStd, georgia, serif;
 }
 #loader h1 i{
 	color: rgb(218, 22, 30);
 }
+.floating{
+	transition: top 0.5;
+}
+#logo{
+	position: absolute;
+	left: 0;
+	font-size: 23px;
+	color: white;
+	font-family: AlbertusMTStd, georgia, serif;
+	letter-spacing: 0.1em;
+	padding:30px;
+}
+#options{
+	position: absolute;
+	right: 0;
+	font-size: 19px;
+	color: white;
+	font-family: UniversLTPro-BoldCond, Impact;
+	padding:30px;
+	text-transform: uppercase;
+}
+#options a, #options .link{
+	color: white;
+	display: block;
+	float: right;
+	margin: 0 8px 10px 8px;
+	text-decoration: none;
+	border-bottom: 1px solid white; 
+	letter-spacing: 0.05em;
+	cursor: pointer;
+}
+#options .link iframe, #options .link a{
+	display: none;
+}
+#options .link:hover iframe[style]{
+	display: inline;
+	width: 75px;
+}
+#options .link:hover span{
+	display: none;
+}
+#options .link:hover{
+	border-bottom: none;
+	margin-right: -20px;
+}
+#cta {
+	-webkit-animation: blink 1s infinite linear;
+}
+#logo span{
+	color: rgb(218, 22, 30);
+}
+#aboutDiv{
+	overflow: scroll;
+	width: 100%;
+	height: calc(100% - 94px);
+	margin-top: 90px;
+}
+#about, .details{
+	box-sizing:border-box;
+	width:100%;
+	float: left;
+	font-size: 32px;
+	font-family: AlbertusMTStd, georgia, serif;
+	color: rgb(218, 22, 30);
+	text-align: center;
+	letter-spacing: 0.08em;
+	padding:0 80px;
+}
+#about{
+	color: white;
+}
+#about a, .details a{
+	color: white;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	text-decoration: none;
+}
+#about a {
+	border: 1px solid white;
+	padding:5px;
+	display: inline;
+    vertical-align:middle;
+}
+#about a:hover{
+	color:white;
+	border-color: white;
+}
 
-	#logo{
-		position: absolute;
-		left: 0;
-		font-size: 23px;
-		color: white;
-		font-family: AlbertusMTStd, georgia, serif;
-		letter-spacing: 0.1em;
-		padding:30px;
-	}
-	#options{
-		position: absolute;
-		right: 0;
-		font-size: 19px;
-		color: white;
-		font-family: UniversLTPro-BoldCond, Impact;
-		padding:30px;
-		text-transform: uppercase;
-	}
-	#options a, #options .link{
-		color: white;
-		display: block;
-		float: right;
-		margin: 0 8px 10px 8px;
-		text-decoration: none;
-		border-bottom: 1px solid white; 
-		letter-spacing: 0.05em;
-		cursor: pointer;
-	}
-	#options .link iframe, #options .link a{
-		display: none;
-	}
-	#options .link:hover iframe[style]{
-		display: inline;
-		width: 75px;
-	}
-	#options .link:hover span{
-		display: none;
-	}
-	#options .link:hover{
-		border-bottom: none;
-		margin-right: -20px;
-	}
-	#cta {
-		-webkit-animation: blink 1s infinite linear;
-	}
-	#logo span{
-		color: rgb(218, 22, 30);
-	}
-	#aboutDiv{
-		overflow: scroll;
-		width: 100%;
-		height: calc(100% - 94px);
-		margin-top: 90px;
-	}
-	#about, .details{
-		box-sizing:border-box;
-		width:100%;
-		float: left;
-		font-size: 32px;
-		font-family: AlbertusMTStd, georgia, serif;
-		color: rgb(218, 22, 30);
-		text-align: center;
-		letter-spacing: 0.08em;
-		padding:0 80px;
-	}
-	#about{
-		color: white;
-	}
-	#about a, .details a{
-		color: white;
-		font-size: 14px;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-	}
-	#about a {
-		border: 1px solid white;
-		padding:5px;
-		display: inline;
-        vertical-align:middle;
-	}
-	#about a:hover{
-		color:white;
-		border-color: white;
-	}
+.details {
+	font-size: 11px;
+	color: white;
+	letter-spacing: 0.1em;
+}
 
-	.details {
-		font-size: 11px;
-		color: white;
-		letter-spacing: 0.1em;
-	}
-
-	.details a {
-		font-family: UniversLTPro-BoldCond, Impact;
-		color: white;
-	}
+.details a {
+	font-family: UniversLTPro-BoldCond, Impact;
+	color: white;
+}
 
 #particleViewer{
 	width: 100%;

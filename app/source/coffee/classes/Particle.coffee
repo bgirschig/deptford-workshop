@@ -32,7 +32,7 @@ class window.Particle extends THREE.Object3D
 
 	reposition: () =>
 		Particle.randomisePos(@) #FIXME
-		@position.y = - (Settings.outerDistance)
+		@position.y = - 30
 		@speed.set(0,0,0)
 
 	@randomisePos: (particle) ->

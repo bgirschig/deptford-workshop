@@ -24,3 +24,9 @@ window.Utils = {
 		else if e.target.readyState == 4
 			Utils.displayError("The error occured while trying to load the json containing gps tags, image dimensions and other critical data.");
 }
+HTMLElement::hide = () ->
+	@className = @className.replace("show", "hide")
+	if @className.indexOf("hide") == -1 then @className += " hide"
+HTMLElement::show = () ->
+	@className = @className.replace("hide", "show")
+	if @className.indexOf("show") == -1 then @className += " show"

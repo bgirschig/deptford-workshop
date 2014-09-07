@@ -9,7 +9,7 @@ module.exports = function(grunt){
 				},
 			},
 			copy:{
-				files: ['source/index.html',
+				files: ['source/*.html',
 						'source/style.css',
 						'../assets/objectImages/data.json',
 						"../assets/_assets-update.txt",
@@ -23,17 +23,33 @@ module.exports = function(grunt){
 				files: ['source/coffee/*.coffee', 'source/coffee/classes/*.coffee'],
 				tasks: ['coffee'],
 				options: {
-					livereload: false
+					livereload: true
+				},
+			},
+			css: {
+				files: ['source/styl/*.stylus'],
+				tasks: ['stylus'],
+				options: {
+					livereload: true
+				},
+			}
+		},
+		stylus: {
+			options: {
+				compress: false,
+				paths: ['Styl/*styl'],
+			},
+			compile: {
+				files: {
+					'../build/css/main.css' : 'source/styl/main.stylus',
 				},
 			},
 		},
-
 		coffee: {
 			compile: {
 				files: {
 					'../build/script/classes.js' : 'source/coffee/classes/*.coffee',
 					'../build/script/main.js' : 'source/coffee/*.coffee',
-					// '../build/script/bookBrowser.js' : 'source/coffee/bookBrowser.coffee'
 				},
 			},
 		},
@@ -42,6 +58,7 @@ module.exports = function(grunt){
 		  main: {
 		    files: [
 		      {src: ['source/index.html'], dest: '../build/index.html', filter: 'isFile'},
+		      {src: ['source/index2.html'], dest: '../build/index2.html', filter: 'isFile'},
 		      {src: ['source/style.css'], dest: '../build/style.css', filter: 'isFile'},
 		      {src: ['node_modules/three/three.min.js'], dest: '../build/script/librairies/three.min.js', filter: 'isFile'},
 		      // {expand: true, cwd: '../assets/', src: ['**'], dest: '../build/assets/'},
@@ -52,6 +69,7 @@ module.exports = function(grunt){
 		}
 	});
 
+	grunt.loadNpmTasks('grunt-contrib-stylus');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-coffee');
 	grunt.loadNpmTasks('grunt-contrib-copy');

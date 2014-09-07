@@ -31,10 +31,7 @@ class window.ImageParticle extends Particle
 
 	update: =>
 		@updatePos()
-		# @rotation.x += (Math.random()-0.5) * Settings.globalRotateSpeed
 		@rotation.y -= 0.0075
-		# @rotation.y += (Math.random()-0.5) * Settings.globalRotateSpeed
-		# @rotation.z += (Math.random()-0.5) * Settings.globalRotateSpeed
 
 	@getGeometryFor: (ratio) ->
 		discreteRatio = Math.round(ratio/Settings.ratioSimplification)
@@ -43,3 +40,13 @@ class window.ImageParticle extends Particle
 		else
 			@geometries[discreteRatio] = new THREE.PlaneGeometry(1, 1)
 			return @geometries[discreteRatio]
+
+
+
+
+
+
+
+
+
+			

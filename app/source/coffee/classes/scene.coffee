@@ -6,11 +6,11 @@ class window.Scene
 		@renderer = new THREE.WebGLRenderer({ alpha: true })
 		@renderer.setSize( window.innerWidth, window.innerHeight )
 		@renderer.setClearColor( Settings.bgColor, 0 )
-		@renderer.domElement.className = "hide"
+		@renderer.domElement.className = "hide fullscreen"
 		@renderer.domElement.id = "threeCanvas"
 		document.body.appendChild( @renderer.domElement )
 		@scene.fog = new THREE.FogExp2( Settings.fogColor, Settings.fogDensity )
-
+		@displayed = false
 		# lighting
 		@ambientLight = new THREE.AmbientLight(Settings.ambientLightColor)
 		@scene.add(@ambientLight)

@@ -21,12 +21,7 @@ class window.ParticleSystem extends THREE.Object3D
 			@particles.push p
 			@soundCount--
 
-		if @count > 0 || @soundCount > 0
-			setTimeout(@addParticle, 5)
-		else if @count == 0 && @soundCount == 0
-			document.getElementById('loader').className = "hide";
-			document.getElementById('logo').className = "";
-			document.getElementById('options').className = "";
-			document.getElementById('aboutDiv').className = "";
+		document.getElementById("loaderValue").innerHTML = @count
 
-		console.log @count
+		if @count > 0 || @soundCount > 0 then setTimeout(@addParticle, 5)
+		else if @count == 0 && @soundCount == 0 then overlayHandler.gotoSection(2)
