@@ -1,6 +1,6 @@
 #overlay.floatMode
 	.floating
-		position fixed
+		position relative
 		display block
 	h1
 		font-size 57pt
