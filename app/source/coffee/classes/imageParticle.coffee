@@ -1,6 +1,6 @@
 class window.ImageParticle extends Particle
 	@idCounter: 0
-	@geometries: {}
+	@geometries: new THREE.PlaneGeometry(1, 1)
 	@maps: []
 	constructor : (x,y,z) ->
 		super(x,y,z,0xFFFF00)
@@ -18,8 +18,8 @@ class window.ImageParticle extends Particle
 		material.side = THREE.DoubleSide
 
 		data = dataJson.images[@particleReference]
-		geometry = ImageParticle.getGeometryFor(data.ratio)
-		plane = new THREE.Mesh geometry, material
+		plane = new THREE.Mesh ImageParticle.geometries, material
+		# plane = new THREE.Mesh ImageParticle.geometries, new THREE.MeshBasicMaterial({color: 'red'})
 		plane.scale.x = data.size
 		plane.scale.y = data.size*data.ratio
 
@@ -32,18 +32,6 @@ class window.ImageParticle extends Particle
 	update: =>
 		@updatePos()
 		@rotation.y -= 0.0075
-
-	@getGeometryFor: (ratio) ->
-		discreteRatio = Math.round(ratio/Settings.ratioSimplification)
-		if @geometries[discreteRatio]
-			return @geometries[discreteRatio]
-		else
-			@geometries[discreteRatio] = new THREE.PlaneGeometry(1, 1)
-			return @geometries[discreteRatio]
-
-
-
-
 
 
 

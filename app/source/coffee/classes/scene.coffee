@@ -5,7 +5,6 @@ class window.Scene
 		@camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 0.1, 1500 )
 		@renderer = new THREE.WebGLRenderer({ alpha: true })
 		@renderer.setSize( window.innerWidth, window.innerHeight )
-		@renderer.setClearColor( Settings.bgColor, 0 )
 		@renderer.domElement.className = "hide fullscreen"
 		@renderer.domElement.id = "threeCanvas"
 		document.body.appendChild( @renderer.domElement )
@@ -33,13 +32,11 @@ class window.Scene
 			@particleSystem.update()
 
 			# cam movements
-			# @camera.rotation.x += (mouse.y/window.innerHeight - 0.5)/10
 			if @particleSystem.targetRotation
 				@particleSystem.rotation.y += (@particleSystem.targetRotation-@particleSystem.rotation.y)/10
 			
 			@particleSystem.rotation.y += (mouse.x/window.innerWidth - 0.5)/30
 			if Settings.unlockCamAxis then @particleSystem.rotation.x += (mouse.y/window.innerHeight - 0.5)/30
-			# @camera.rotation.x += (mouse.y/window.innerHeight - 0.5)/5
 
 			@renderer.render @scene, @camera
 		requestAnimationFrame @update
