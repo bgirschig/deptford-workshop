@@ -6,8 +6,6 @@ class window.ImageParticle extends Particle
 		super(x,y,z,0xFFFF00)
 		@particleReference = ImageParticle.idCounter++%dataJson.images.length
 		
-		data = dataJson.images[@particleReference]
-
 		if(!ImageParticle.maps[@particleReference]?)
 			ImageParticle.maps[@particleReference] = THREE.ImageUtils.loadTexture 'assets/objectImages/'+@particleReference+'.png';
 		
@@ -17,11 +15,10 @@ class window.ImageParticle extends Particle
 		})
 		material.side = THREE.DoubleSide
 
-		data = dataJson.images[@particleReference]
 		plane = new THREE.Mesh ImageParticle.geometries, material
-		# plane = new THREE.Mesh ImageParticle.geometries, new THREE.MeshBasicMaterial({color: 'red'})
-		plane.scale.x = data.size
-		plane.scale.y = data.size*data.ratio
+
+		plane.scale.x = dataJson.images[@particleReference].size
+		plane.scale.y = dataJson.images[@particleReference].size*dataJson.images[@particleReference].ratio
 
 		@add plane
 		plane.particleReference = @particleReference
@@ -32,9 +29,3 @@ class window.ImageParticle extends Particle
 	update: =>
 		@updatePos()
 		@rotation.y -= 0.0075
-
-
-
-
-
-			

@@ -5,8 +5,8 @@ window.Settings = {
 	unlockCamAxis: false
 
 	# counts
-	particlesCount: 3000
-	soundParticlesCount: 0
+	particlesCount: 2500
+	soundParticlesCount: 2
 	
 	# forces
 	gravity: new THREE.Vector3(0, 0.0015 ,0)
@@ -27,7 +27,7 @@ window.Settings = {
 
 	# environment
 	skybox: true
-	ambientLightColor: 0xBBBBBB	
+	ambientLightColor: 0xBBBBBB
 	
 	#fog
 	fogDensity: 0.015

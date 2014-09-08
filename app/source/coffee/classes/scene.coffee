@@ -23,7 +23,6 @@ class window.Scene
 		# creating the particleSystem
 		@particleSystem = new ParticleSystem(Settings.particlesCount, Settings.soundParticlesCount)
 		@scene.add @particleSystem
-
 		if Settings.skybox
 			@skybox = createSkybox()
 			@particleSystem.add @skybox

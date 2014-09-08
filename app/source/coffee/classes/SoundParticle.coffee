@@ -28,7 +28,7 @@ class window.SoundParticle extends Particle
 		@sound.source.start(0)
 
 	update: =>
-		pos = new THREE.Vector3();
+		pos = new THREE.Vector3()
 		pos.setFromMatrixPosition(@matrixWorld)
 		if @sound then @sound.panner.setPosition(pos.x*Settings.soundPropagation, pos.z*Settings.soundPropagation ,pos.y*Settings.soundPropagation)
 		@updatePos()
