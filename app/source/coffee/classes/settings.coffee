@@ -5,7 +5,7 @@ window.Settings = {
 	unlockCamAxis: false
 
 	# counts
-	particlesCount: 3000
+	particlesCount: 300
 	soundParticlesCount: 0
 	
 	# forces
@@ -14,10 +14,10 @@ window.Settings = {
 	
 	# sound
 	soundPropagation: 0.5 # smaller number means sound fades away quicker with the distance
-	soundVolume: 1 # master volume
+	soundVolume: 4 # master volume
 	
 	# distances
-	vitalSpace: 1
+	vitalSpace: 3.5
 	outerDistance: 80
 	deletionDistance: 81
 

@@ -33,15 +33,15 @@ setOrientation = (e) ->
 # recieves a null event if there are no sensors.
 initOrientation = (e) ->
 	window.removeEventListener("deviceorientation", initOrientation, false)
-
-	if e.alpha == null
+	if e.alpha != null
 		document.addEventListener('mousemove', updateMouse, false)
 		document.addEventListener( 'mousedown', onDocumentMouseDown, false )
-	else
 		window.addEventListener("deviceorientation", setOrientation, false)
 
-# allows to determine if there are sensors that can be used for camera movements
 window.addEventListener("deviceorientation", initOrientation, false)
+document.addEventListener('mousemove', updateMouse, false)
+document.addEventListener( 'mousedown', onDocumentMouseDown, false )
+
 ctas = document.getElementsByClassName("cta")
 for cta in ctas
 	cta.addEventListener("click", ()->

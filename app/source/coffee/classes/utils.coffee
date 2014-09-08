@@ -30,3 +30,9 @@ HTMLElement::hide = () ->
 HTMLElement::show = () ->
 	@className = @className.replace("hide", "show")
 	if @className.indexOf("show") == -1 then @className += " show"
+HTMLElement::addClass = (val) ->
+	if @className.indexOf(val) == -1 then @className += " "+val
+HTMLElement::removeClass = (val) ->
+	@className = @className.replace(" val", "")
+	@className = @className.replace("val ", "")
+	@className = @className.replace("val", "")

@@ -42,6 +42,8 @@ module.exports = function(grunt){
 			compile: {
 				files: {
 					'../build/css/main.css' : 'source/styl/main.stylus',
+					'../build/css/mobile.css' : 'source/styl/mobile.stylus',
+					'../build/css/desktop.css' : 'source/styl/desktop.stylus',
 				},
 			},
 		},

@@ -10,7 +10,8 @@ class window.Particle extends THREE.Object3D
 		@acceleration = new THREE.Vector3(0,0,0)
 		if Settings.debug then @add Debugger.axes(1, debugColor)
 	updatePos: =>
-		if (@position.distanceTo(Particle.zeroVector)) > Settings.deletionDistance then @reposition()		
+		d = @position.distanceTo Particle.zeroVector
+		if d > Settings.deletionDistance || d < Settings.vitalSpace then @reposition()		
 
 		# drag
 		speedMag = @speed.length()

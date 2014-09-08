@@ -1,0 +1,45 @@
+// variables
+theRed = #dd223c
+
+#overlay.fixMode
+	height auto
+	a
+		text-transform uppercase
+	#map, h1, #twitterBtn
+		display none
+
+	#logo
+		background-color white
+		padding 15px
+		font-size 23px
+		letter-spacing 2px
+	.about
+		margin-top 30px
+		a
+			font: 17px UniversLTPro-BoldCond, Impact
+		&#aboutContent
+			font-size 25px
+		&#aboutCaption
+			letter-spacing 2px
+			text-transform uppercase
+			font-size 10px
+			line-height 200%
+			margin 30px auto 100px auto
+			br
+				display none
+			a
+				font-size inherit
+	#miniMenu
+		position absolute
+		top 0
+		margin 20px
+		right 0px
+		#closeOverlay
+			background-image: url("../assets/ui/closeRed.svg")
+	#loaderCta
+		float right
+		color theRed
+		margin 5px
+		#Cta
+			font-size 15px
+			vertical-align middle

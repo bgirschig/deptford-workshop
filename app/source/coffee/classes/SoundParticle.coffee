@@ -32,6 +32,5 @@ class window.SoundParticle extends Particle
 		pos.setFromMatrixPosition(@matrixWorld)
 		if @sound then @sound.panner.setPosition(pos.x*Settings.soundPropagation, pos.z*Settings.soundPropagation ,pos.y*Settings.soundPropagation)
 		@updatePos()
-
 	onError: (e) =>
 		console.log "an error occured while decoding a sound"

@@ -29,17 +29,17 @@ class window.Scene
 			@skybox = createSkybox()
 			@particleSystem.add @skybox
 	update: () =>
-		@particleSystem.update()
+		if(scene.displayed)
+			@particleSystem.update()
 
-		# cam movements
-		# @camera.rotation.x += (mouse.y/window.innerHeight - 0.5)/10
-		if @particleSystem.targetRotation
-			@particleSystem.rotation.y += (@particleSystem.targetRotation-@particleSystem.rotation.y)/10
-		
-		@particleSystem.rotation.y += (mouse.x/window.innerWidth - 0.5)/30
-		if Settings.unlockCamAxis then @particleSystem.rotation.x += (mouse.y/window.innerHeight - 0.5)/30
-		# @camera.rotation.x += (mouse.y/window.innerHeight - 0.5)/5
+			# cam movements
+			# @camera.rotation.x += (mouse.y/window.innerHeight - 0.5)/10
+			if @particleSystem.targetRotation
+				@particleSystem.rotation.y += (@particleSystem.targetRotation-@particleSystem.rotation.y)/10
+			
+			@particleSystem.rotation.y += (mouse.x/window.innerWidth - 0.5)/30
+			if Settings.unlockCamAxis then @particleSystem.rotation.x += (mouse.y/window.innerHeight - 0.5)/30
+			# @camera.rotation.x += (mouse.y/window.innerHeight - 0.5)/5
 
+			@renderer.render @scene, @camera
 		requestAnimationFrame @update
-		# setTimeout @update, 500
-		@renderer.render @scene, @camera

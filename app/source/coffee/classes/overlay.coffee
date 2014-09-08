@@ -4,11 +4,17 @@ wiggleSmooth = 50
 counter = 3000
 class window.OverlayHandler
 	constructor: () ->
-		@gotoSection(0)
-		setTimeout(()=>
-			@gotoSection(1)
-		, 4000)
-		@initPositions()
+		@waitTransition = false
+		@floatMode = document.getElementById("overlay").className.indexOf("floatMode") != -1
+		
+
+		if(@floatMode)
+			@gotoSection(0)
+			setTimeout(()=>
+				@gotoSection(1)
+			, 300)
+			@initPositions()
+		else @gotoSection 5
 
 		document.getElementById("arrowNext").addEventListener("click", @nextParticle)
 		document.getElementById("arrowPrev").addEventListener("click", @prevParticle)
@@ -24,14 +30,15 @@ class window.OverlayHandler
 
 	gotoSection : (section) ->
 		switch section
-			when 0
+			when 0 #intro with map
 				document.getElementById("loader").show()
 				document.getElementById("title").show()
 				document.getElementById("logo").hide()
 				document.getElementById("map").show()
 				document.getElementById("aboutContent").hide()
 				document.getElementById("aboutCaption").hide()
-			when 1
+				document.getElementById("logo").addClass("blackFont")
+			when 1 # about text with loader 
 				@map.element.style.top = - @map.element.offsetHeight+"px";
 				@title.element.style.top = - @title.element.offsetWidth+"px";
 				@map.element.style.opacity = 0;
@@ -44,36 +51,63 @@ class window.OverlayHandler
 
 				@aboutContent.attach(document.getElementById("aboutContent"))
 				@aboutCaption.attach(document.getElementById("aboutCaption"))
+
+				@waitTransition = true
 				setTimeout ()=>
+					@waitTransition = false
 					@title.doAnimate = false
 					@map.doAnimate = false
 					document.getElementById("title").hide()
 					document.getElementById("map").hide()
-				,2000
-			when 2
+				,300
+			when 2 # about text with "continue" button
 				document.getElementById("loader").hide()
 				document.getElementById("cta").show()
 				if !Settings.sceneStarted
 					scene.update()
 					Settings.sceneStarted = true
-				document.body.appendChild(document.getElementById("overlay"))
-			when 3
-				@aboutContent.doAnimate = false
-				@aboutCaption.doAnimate = false
-				document.getElementById("threeCanvas").show()
-				scene.displayed = true
-				document.getElementById("overlay").style.opacity = 0
-				document.getElementById("logo").style.margin = "12px"
-				document.getElementById("cta").hide()
-				document.getElementById("miniMenu").show()
-			when 4
-				if !@currentParticle? then @showParticle(0)
-				@aboutContent.element.hide()
-				@aboutCaption.element.hide()
-				document.getElementById('particleViewer').show()
-				document.getElementById("overlay").style.opacity = 1
-				scene.displayed = false
+			when 3 # 3d view
+				if !@waitTransition
+					document.getElementById("threeCanvas").show()
+					scene.displayed = true
+					document.getElementById("overlay").style.opacity = 0
+					@waitTransition = true
+					setTimeout ()=>
+						SoundHandler.gainNode.gain.value = 1
+						@waitTransition = false
+						document.getElementById("overlay").hide()
+						if @floatMode
+							@aboutContent.doAnimate = false
+							@aboutCaption.doAnimate = false
+					,300
 
+					document.getElementById("cta").hide()
+					document.getElementById("miniMenu").show()
+			when 4 # particleViewer desktop
+				if !@waitTransition
+					if !@currentParticle? then @showParticle(0)
+					document.getElementById("aboutContent").hide()
+					document.getElementById("aboutCaption").hide()
+					if @floatMode
+						document.getElementById("logo").addClass("whiteFont")
+						document.getElementById("logo").removeClass("blackFont")
+					document.getElementById("overlay").style.backgroundImage = 'url("assets/backgroundDark.jpg")';
+					document.getElementById("overlay").show()
+					
+					@waitTransition = true
+					setTimeout () =>
+						@waitTransition = false
+						document.getElementById("overlay").style.opacity = 1
+					,10
+					document.getElementById('particleViewer').show()
+					scene.displayed = false
+
+			when 5 #mobile about
+				console.log 5
+				document.getElementById("logo").show()
+				document.getElementById("loader").show()
+				document.getElementById("aboutContent").show()
+				document.getElementById("aboutCaption").show()
 	showParticle: (particleRef) ->
 		@currentParticle = particleRef
 		@gotoSection(4)

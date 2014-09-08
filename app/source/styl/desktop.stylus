@@ -1,0 +1,72 @@
+#overlay.floatMode
+	.floating
+		position fixed
+		display block
+	h1
+		font-size 57pt
+		letter-spacing 7px
+		width 650px
+		top 50%
+		left 50%
+		opacity 0
+		transform translate(-50%, -50%) scale(0.1)
+		transition opacity 0.5s, transform 0.6s, bottom 0.3s, top 2s ease-in
+	#loaderCta
+		left 0
+		position absolute
+		bottom 50px
+		width 100%
+		text-align center
+		
+	#logo
+		font-size 25px
+		width 190px
+		margin 2% auto 0 auto
+		padding 8px
+		margin 12px
+	#map
+		height 80%
+		top 50%
+		left 50%
+		transform translate(-50%, -50%) scale(0.5)
+		opacity 0.3
+		transition opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in
+	#cta
+		font-size 15px
+		letter-spacing 1px
+		padding 8px
+		display inline-block
+		border 2px solid black
+	#miniMenu
+		position: fixed
+		top: 0; right: 0
+		margin: 2.3%
+		#closeOverlay
+			background-image: url("../assets/ui/closeWhite.svg")
+		#twitterBtn
+			color white
+			font-size 25px
+			margin-right 6px
+	
+		text-align center
+	.about
+		text-align center
+		&#aboutContent
+			top 40%
+			left 50%
+			opacity 0
+			transform translate(-50%, -50%) scale(0.7)
+			transition opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			font-size 30px
+			a
+				vertical-align middle
+				font-family UniversLTPro-BoldCond, Impact
+				font-size 11px
+				letter-spacing 0.9px
+				border thin solid theRed
+				padding 7px 4px 4px 4px
+		&#aboutCaption
+			left 50%
+			transform translate(-50%, -50%) scale(0.7)
+			transition opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			font-size 12px
