@@ -1,8 +1,8 @@
 <html>
 <head>
 	<title>Deptford, rising</title>
-	<link rel="stylesheet" href="webfonts/font-awesome-4.2.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="MyFontsWebfontsKit.css">
+	<link rel="stylesheet" href="assets/webfonts/font-awesome-4.2.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/MyFontsWebfontsKit.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css">
 	<link rel="stylesheet" type="text/css" href="css/desktop.css">
@@ -10,9 +10,9 @@
 <body>
 	<!-- floatMode -->
 	<!-- fixMode -->
-	<div id="overlay" class="fullscreen floatMode">
-		<img id="map" src="assets/ui/map.png" class="floating"/>
-		<h1 id="title" class="serif floating">Deptford<i class="red">, </i>Rising</h1>
+	<div id="overlay" class="fullscreen fixMode">
+		<div id="centerMap"><img id="map" src="assets/ui/map.png" class="floating"/></div>
+		<div id="centerTitle"><h1 id="title" class="serif floating">Deptford<i class="red">, </i>Rising</h1></div>
 		<div id="logo" class="serif">
 			Deptford<i class="red">, </i>Rising
 			<div id="loaderCta">
@@ -20,12 +20,13 @@
 				<div id="cta" class="hide noSerif cta pointer">CONTINUE</div>
 			</div>
 		</div>
-
-		<div id="aboutContent" class="floating about red hide serif">
-			&ldquo;...Find a previously unnoticed urban neighbourhood, ideally one that&rsquo;s a bit down on its luck. Pioneer <a href="http://www.theguardian.com/fashion/2014/jun/22/end-of-the-hipster-flat-caps-and-beards" target="_blank">hipsters</a> move in and coolhunters ensure it starts <a href="https://twitter.com/search?q=deptford&amp;src=typd" target="_blank">trending</a> on Twitter. A year later, the mainstream media <a href="http://www.vice.com/en_uk/read/deptford-luke-overin" target="_blank">notices</a> and, for the next 12 months, the neighbourhood is byword for urban cool. Soon property prices <a href="http://www.economist.com/blogs/blighty/2013/08/londons-demography" target="_blank">soar</a> pushing the original residents out, the <a href="https://www.google.co.uk/search?q=banker&amp;client=safari&amp;rls=en&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ei=NcvzU8C6LaGr0QXko4HYDQ&amp;ved=0CAgQ_AUoAQ&amp;biw=1440&amp;bih=764" target="_blank">bankers</a> (always a trailing indicator) begin to move in and a <a href="http://www.foxtons.co.uk/living-in/deptford/" target="_blank">Foxtons</a> opens. Finally, the New York Times runs a <a href="http://tmagazine.blogs.nytimes.com/2010/08/26/london-underground-dalston-renaissance/?_php=true&amp;_type=blogs&amp;_r=0" target="_blank">piece</a> in which it &ldquo;discovers&rdquo; the area and the cycle is complete. The last hipsters move on and find a new neighbourhood to play with...&rdquo;
-		</div>
-		<div id="aboutCaption" class="floating about red hide serif">
-			Excerpt from <a href="http://www.telegraph.co.uk/men/thinking-man/10561607/Why-this-Shoreditchification-of-London-must-stop.html" target="_blank">Why this 'Shoreditchification' of London must stop</a>, by <a href="https://twitter.com/AlexanderProud" target="_blank">Alex Proud</a>. Published in The Telegraph, 13 January 2014. <br />A project by the office of <a href="http://marckremers.com" target="_blank">Marc Kremers</a> and the workshop particpants of <a href="http://registrationschool.co.uk" target="_blank">Registration School</a> on 20 August 2014 in <a href="https://www.google.co.uk/maps/place/London+SE8/@51.4793574,-0.0296966,14z/data=!3m1!4b1!4m2!3m1!1s0x48760258cc99bb3d:0x351232eadec4680c" target="_blank">Deptford, SE8, London</a>
+		<div id="about">
+			<div id="aboutContent" class="floating about red hide serif">
+					&ldquo;...Find a previously unnoticed urban neighbourhood, ideally one that&rsquo;s a bit down on its luck. Pioneer <a href="http://www.theguardian.com/fashion/2014/jun/22/end-of-the-hipster-flat-caps-and-beards" target="_blank">hipsters</a> move in and coolhunters ensure it starts <a href="https://twitter.com/search?q=deptford&amp;src=typd" target="_blank">trending</a> on Twitter. A year later, the mainstream media <a href="http://www.vice.com/en_uk/read/deptford-luke-overin" target="_blank">notices</a> and, for the next 12 months, the neighbourhood is byword for urban cool. Soon property prices <a href="http://www.economist.com/blogs/blighty/2013/08/londons-demography" target="_blank">soar</a> pushing the original residents out, the <a href="https://www.google.co.uk/search?q=banker&amp;client=safari&amp;rls=en&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ei=NcvzU8C6LaGr0QXko4HYDQ&amp;ved=0CAgQ_AUoAQ&amp;biw=1440&amp;bih=764" target="_blank">bankers</a> (always a trailing indicator) begin to move in and a <a href="http://www.foxtons.co.uk/living-in/deptford/" target="_blank">Foxtons</a> opens. Finally, the New York Times runs a <a href="http://tmagazine.blogs.nytimes.com/2010/08/26/london-underground-dalston-renaissance/?_php=true&amp;_type=blogs&amp;_r=0" target="_blank">piece</a> in which it &ldquo;discovers&rdquo; the area and the cycle is complete. The last hipsters move on and find a new neighbourhood to play with...&rdquo;
+			</div><br />
+			<div id="aboutCaption" class="floating about red hide serif">
+				Excerpt from <a href="http://www.telegraph.co.uk/men/thinking-man/10561607/Why-this-Shoreditchification-of-London-must-stop.html" target="_blank">Why this 'Shoreditchification' of London must stop</a>, by <a href="https://twitter.com/AlexanderProud" target="_blank">Alex Proud</a>. Published in The Telegraph, 13 January 2014. <br />A project by the office of <a href="http://marckremers.com" target="_blank">Marc Kremers</a> and the workshop particpants of <a href="http://registrationschool.co.uk" target="_blank">Registration School</a> on 20 August 2014 in <a href="https://www.google.co.uk/maps/place/London+SE8/@51.4793574,-0.0296966,14z/data=!3m1!4b1!4m2!3m1!1s0x48760258cc99bb3d:0x351232eadec4680c" target="_blank">Deptford, SE8, London</a>
+			</div>
 		</div>
 
 		<div id="particleViewer" class="hide serif fullscreen">

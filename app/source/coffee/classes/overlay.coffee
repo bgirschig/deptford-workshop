@@ -1,34 +1,60 @@
 wiggleDistance = 20
 wiggleSpeed = 800
 wiggleSmooth = 50
-counter = 3000
 class window.OverlayHandler
 	constructor: () ->
+		@checkMode(false)
+		if window.innerWidth>1000
+			document.getElementById("overlay").removeClass("fixMode")
+			document.getElementById("overlay").addClass("floatMode")
+		else
+			document.getElementById("overlay").removeClass("floatMode")
+			document.getElementById("overlay").addClass("fixMode")
+
 		@waitTransition = false
 		@floatMode = document.getElementById("overlay").className.indexOf("floatMode") != -1
-		
+		@currentSection
 
 		if(@floatMode)
 			@gotoSection(0)
 			setTimeout(()=>
 				@gotoSection(1)
-			, 1300)
+			, 1500)
 			@initPositions()
 		else @gotoSection 5
 
 		document.getElementById("arrowNext").addEventListener("click", @nextParticle)
 		document.getElementById("arrowPrev").addEventListener("click", @prevParticle)
+	checkMode: (playPause=true)->
+		if window.innerWidth<1000
+			@floatMode = "fixMode"
+			document.getElementById("overlay").addClass("fixMode")
+			document.getElementById("overlay").removeClass("floatMode")
+			if playPause	
+				@title.doAnimate = false
+				@map.doAnimate = false
+				@aboutContent.doAnimate = false
+				@aboutCaption.doAnimate = false
+			
+			document.getElementById("logo").addClass("whiteFont")
+			document.getElementById("logo").removeClass("blackFont")
+		else
+			@floatMode = "floatMode"
+			document.getElementById("overlay").removeClass("fixMode")
+			document.getElementById("overlay").addClass("floatMode")
+		
 	initPositions: ()->
 		@title = new flatParticle(3,20)
 		@title.attach(document.getElementById("title"))
 
 		@map = new flatParticle(3,20)
-		@map.attach(document.getElementById("map"))
+		@map.attach(document.getElementById("map"), true)
 
 		@aboutContent = new flatParticle(5,0)
 		@aboutCaption = new flatParticle(5,0)
 
 	gotoSection : (section) ->
+		@currentSection = section
 		switch section
 			when 0 #intro with map
 				document.getElementById("loader").show()
@@ -39,15 +65,14 @@ class window.OverlayHandler
 				document.getElementById("aboutCaption").hide()
 				document.getElementById("logo").addClass("blackFont")
 			when 1 # about text with loader 
-				@map.element.style.top = - @map.element.offsetHeight+"px"
-				@title.element.style.top = - @title.element.offsetWidth+"px"
+				document.getElementById("centerMap").style.top = "-50%"
+				document.getElementById("centerTitle").style.top = "-50%"
 				@map.element.style.opacity = 0
 				@title.element.style.opacity = 0
 				document.getElementById("logo").show()
 				document.getElementById("aboutContent").show()
 				document.getElementById("aboutCaption").show()
 				rect = document.getElementById("aboutContent").getBoundingClientRect()
-				document.getElementById("aboutCaption").style.top = rect.height+rect.top+80+"px"
 
 				@aboutContent.attach(document.getElementById("aboutContent"))
 				@aboutCaption.attach(document.getElementById("aboutCaption"))
@@ -68,9 +93,11 @@ class window.OverlayHandler
 					Settings.sceneStarted = true
 			when 3 # 3d view
 				if !@waitTransition
+					document.getElementById("logo").addClass("left")
 					document.getElementById("threeCanvas").show()
-					scene.displayed = true
 					document.getElementById("overlay").style.opacity = 0
+					scene.displayed = true
+					
 					@waitTransition = true
 					setTimeout ()=>
 						SoundHandler.gainNode.gain.value = 1
@@ -84,6 +111,7 @@ class window.OverlayHandler
 					document.getElementById("cta").hide()
 					document.getElementById("miniMenu").show()
 			when 4 # particleViewer desktop
+				document.getElementById("map").hide()
 				if !@waitTransition
 					if !@currentParticle? then @showParticle(0)
 					document.getElementById("aboutContent").hide()
@@ -103,7 +131,6 @@ class window.OverlayHandler
 					scene.displayed = false
 
 			when 5 #mobile about
-				console.log 5
 				document.getElementById("logo").show()
 				document.getElementById("loader").show()
 				document.getElementById("aboutContent").show()
@@ -127,11 +154,6 @@ class window.OverlayHandler
 	nextParticle: ()=>
 		nextId = if @currentParticle<dataJson.images.length-1 then @currentParticle+1 else 0
 		@showParticle nextId
-	updateDefaultPos :()=>
-		@title.updateOffset()
-		@map.updateOffset()
-		@aboutContent.updateOffset()
-		@aboutCaption.updateOffset()
 
 class flatParticle
 	constructor: (angleAmplitude, angleOffset) ->
@@ -140,40 +162,35 @@ class flatParticle
 		@angle = 0
 		@targetAngle = 0
 		@targetPosRefAngle = 0
-		@offsetX
-		@offsetY
 		@angleAmplitude = angleAmplitude
 		@angleOffset = angleOffset
-	attach : (element) =>
+		@x = 0
+		@y = 0
+	attach : (element, center) =>
 		@element = element
+		if center then @offsetY = - @element.offsetHeight/2 else @offsetY = 0
 		setTimeout () =>
-			@x = -(@element.offsetWidth/2)
-			@y = -(@element.offsetHeight/2)
 			@element.style.opacity = 0.9
-			@wiggle()
-			@animate()
+			@play()
 		, 1
-		setTimeout ()=>
-			@isIntro = false
-			@x = (-@element.getBoundingClientRect().width/2) + Math.cos(@targetPosRefAngle) * wiggleDistance
-			@y = (-@element.getBoundingClientRect().height/2) + Math.sin(@targetPosRefAngle) * wiggleDistance
-		,400
+	play : ()=>
+		@doAnimate = true
+		@wiggle()
+		@animate()
 	wiggle : () =>
-		@targetPosRefAngle += Math.random()*Math.PI/2 - Math.random()*Math.PI/4
-		if Math.random() > 0.5 then @targetAngle = @angleOffset-@angleAmplitude else @targetAngle = @angleOffset+@angleAmplitude
-		if @doAnimate then setTimeout(@wiggle, wiggleSpeed)
-	updateOffset: ()=>
-		@offsetX = -@element.offsetWidth/2
-		@offsetY = -@element.offsetHeight/2
+		if @doAnimate
+			if @offsetY!=0 then @offsetY = - @element.offsetHeight/2
+			@targetPosRefAngle += Math.random()*Math.PI/2 - Math.random()*Math.PI/4
+			if Math.random() > 0.5 then @targetAngle = @angleOffset-@angleAmplitude else @targetAngle = @angleOffset+@angleAmplitude
+			setTimeout(@wiggle, wiggleSpeed)
+
 	animate : () =>
-		if counter > 0 then counter-= 5
-		targetX = @offsetX + Math.cos(@targetPosRefAngle) * wiggleDistance
-		targetY = @offsetY + Math.sin(@targetPosRefAngle) * wiggleDistance
-		@x += (targetX - @x) / wiggleSmooth
-		@y += (targetY - @y) / wiggleSmooth
-		@angle += (@targetAngle - @angle) / wiggleSmooth
-		if @isIntro
-			@element.style.webkitTransform = "translate(-50%,-50%) scale(1)"
-		else
-			@element.style.webkitTransform = "translate("+(@x)+"px, "+(@y)+"px) rotate("+@angle+"deg) scale(1)"
-		if @doAnimate then setTimeout(@animate, 50)
+		if @doAnimate
+			targetX = Math.cos(@targetPosRefAngle) * wiggleDistance
+			targetY = Math.sin(@targetPosRefAngle) * wiggleDistance
+			@x += (targetX - @x) / wiggleSmooth
+			@y += (targetY - @y) / wiggleSmooth
+			@angle += (@targetAngle - @angle) / wiggleSmooth
+			@element.style.webkitTransform = "translate("+(@x)+"px, "+(@offsetY+@y)+"px) rotate("+@angle+"deg) scale(1)"
+			setTimeout(@animate, 50)
+

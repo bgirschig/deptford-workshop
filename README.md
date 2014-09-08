@@ -15,6 +15,8 @@ deptford-workshop
 	- [ ] sensor - cam movement conversion
 	- [ ] auto select mode (mobile / desktop)
 - [ ] replace sounds
+- [X] font sizes
+
 
 ##QUESTIONS
 - no twitter on mobile?

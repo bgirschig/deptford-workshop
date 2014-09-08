@@ -28,7 +28,7 @@ setOrientation = (e) ->
 	document.removeEventListener( 'mousemove', updateMouse, false )
 	document.removeEventListener( 'mousedown', onDocumentMouseDown, false )
 	alpha = e.alpha
-	scene.particleSystem.targetRotation = -e.alpha/180*Math.PI
+	# scene.particleSystem.targetRotation = -e.alpha/180*Math.PI
 
 # recieves a null event if there are no sensors.
 initOrientation = (e) ->
@@ -53,6 +53,7 @@ onWindowResize = ()->
     scene.camera.aspect = window.innerWidth / window.innerHeight;
     scene.camera.updateProjectionMatrix();
     scene.renderer.setSize( window.innerWidth, window.innerHeight );
+    overlayHandler.checkMode()
 window.addEventListener 'resize', onWindowResize, false
 
 # shortcuts

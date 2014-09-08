@@ -33,6 +33,6 @@ HTMLElement::show = () ->
 HTMLElement::addClass = (val) ->
 	if @className.indexOf(val) == -1 then @className += " "+val
 HTMLElement::removeClass = (val) ->
-	@className = @className.replace(" val", "")
-	@className = @className.replace("val ", "")
-	@className = @className.replace("val", "")
+	@className = @className.replace(" "+val, "")
+	@className = @className.replace(val+" ", "")
+	@className = @className.replace(val, "")
