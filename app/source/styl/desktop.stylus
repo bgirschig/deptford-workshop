@@ -1,36 +1,51 @@
+// variables
+theRed = #dd223c
+
 #overlay.floatMode
+	text-align center
 	.floating
 		position relative
-		display block
+		display inline-block
 	h1
 		font-size 57pt
 		letter-spacing 7px
 		width 650px
-		top 50%
-		left 50%
 		opacity 0
-		transform translate(-50%, -50%) scale(0.1)
+		transform scale(0.1)
 		transition opacity 0.5s, transform 0.6s, bottom 0.3s, top 2s ease-in
+	.blackFont
+		color black
+	.whiteFont
+		color white
 	#loaderCta
 		left 0
 		position absolute
 		bottom 50px
 		width 100%
 		text-align center
-		
+	#centerTitle
+		width 100%
+		position absolute
+		top 40%
+		left 0
+		transition top 0.8s
 	#logo
 		font-size 25px
 		width 190px
-		margin 2% auto 0 auto
 		padding 8px
-		margin 12px
-	#map
-		height 80%
+		margin: 1% auto;
+		&.left
+			margin 1%
+	#centerMap
+		width 100%
+		position absolute
 		top 50%
-		left 50%
-		transform translate(-50%, -50%) scale(0.5)
-		opacity 0.3
-		transition opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in
+		transition top 0.8s
+		#map
+			height 80%
+			transform scale(0.5)
+			opacity 0.3
+			transition opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in
 	#cta
 		font-size 15px
 		letter-spacing 1px
@@ -39,23 +54,25 @@
 		border 2px solid black
 	#miniMenu
 		position: fixed
-		top: 0; right: 0
-		margin: 2.3%
+		top 0; right 0
+		margin 2.3%
 		#closeOverlay
 			background-image: url("../assets/ui/closeWhite.svg")
 		#twitterBtn
 			color white
 			font-size 25px
-			margin-right 6px
+			margin-right 13px
 	
 		text-align center
-	.about
+	#about
+		left 0
 		text-align center
-		&#aboutContent
-			top 40%
-			left 50%
+		transform: translate(0,-50%)
+		position: absolute
+		top: 40%
+		#aboutContent
 			opacity 0
-			transform translate(-50%, -50%) scale(0.7)
+			transform scale(0.7)
 			transition opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
 			a
 				vertical-align middle
@@ -64,8 +81,9 @@
 				letter-spacing 0.9px
 				border thin solid theRed
 				padding 7px 4px 4px 4px
-		&#aboutCaption
-			left 50%
-			transform translate(-50%, -50%) scale(0.7)
+		#aboutCaption
+			margin-top 3%
+			transform scale(0.7)
 			transition opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
 			font-size 12px
+

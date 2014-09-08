@@ -1,4 +1,4 @@
-// variables
+ // variables
 theRed = #dd223c
 
 #overlay.fixMode
@@ -10,19 +10,20 @@ theRed = #dd223c
 
 	#logo
 		background-color white
-		padding 15px
-		font-size 23px
+		padding 18px
+		font-size 27px
 		letter-spacing 2px
 	.about
 		margin-top 30px
 		a
-			font: 17px UniversLTPro-BoldCond, Impact
+			font: 45px UniversLTPro-BoldCond, Impact
 		&#aboutContent
-			font-size 25px
+			font-size 65px
+			line-height 130%
 		&#aboutCaption
 			letter-spacing 2px
 			text-transform uppercase
-			font-size 10px
+			font-size 16px
 			line-height 200%
 			margin 30px auto 100px auto
 			br
@@ -41,5 +42,5 @@ theRed = #dd223c
 		color theRed
 		margin 5px
 		#Cta
-			font-size 15px
+			font-size 20px
 			vertical-align middle

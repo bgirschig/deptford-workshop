@@ -5,6 +5,7 @@ theRed = #dd223c
 a{color: inherit; text-decoration: none;}
 div,h1,h2,body{margin: 0; padding: 0}
 i{font-style: normal}
+
 #overlay
 	z-index 2
 	transition opacity 0.3s
@@ -14,11 +15,11 @@ i{font-style: normal}
 		width 90%
 		margin auto
 	#loader
-		font-size 15px
+		font-size 20px
 		letter-spacing 1px
 		img
-			width 12px; height 12px
-			margin-right 5px
+			width 15px; height 15px
+			margin-right 9px
 			-webkit-animation: spin 2s infinite linear
 			animation: spin 2s infinite linear
 	#particleViewer
@@ -90,20 +91,26 @@ a
 .centerWrap
 	width 100%
 	text-align center
-.blackFont
-	color black
-.whiteFont
-	color white
 
-@media (min-width: 1800px)
-	.about
+@media (min-width: 1800px) and (min-height: 1090px)
+	#about
 		font-size 60px
-@media (max-width: 1800px) and (min-width: 900px)
-	.about
+		#aboutContent
+			a
+				font-size 25px !important
+				letter-spacing 2 !important
+		#aboutCaption
+			font-size 20px !important
+@media (max-width: 1800px) and (min-width: 900px) and (min-height: 960px), (max-height: 1090px) and (min-width: 900px) and (min-height: 960px)
+	#about
 		font-size 40px
-@media (max-width: 900px)
-	.about
-		font-size 30px
+		#aboutContent
+			margin-bottom 50px
+@media (max-width: 900px), (max-height:960px) 
+	#about
+		font-size 25px
+		#aboutContent
+			margin-bottom 50px
 
 
 @keyframes spin
