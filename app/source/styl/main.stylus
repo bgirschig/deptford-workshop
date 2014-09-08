@@ -94,15 +94,20 @@ a
 	color black
 .whiteFont
 	color white
+
+@media (min-width: 1800px)
+	.about
+		font-size 60px
+@media (max-width: 1800px) and (min-width: 900px)
+	.about
+		font-size 40px
+@media (max-width: 900px)
+	.about
+		font-size 30px
+
+
 @keyframes spin
 {
     from{transform:rotate(0deg);}
     to{transform:rotate(360deg);}
-}
-@keyframes floating
-{
-	0%{transform:rotate(0deg)}
-	25%{transform:rotate(0.5deg)}
-	75%{transform:rotate(-0.5deg)}
-	100%{transform:rotate(0deg)}
 }

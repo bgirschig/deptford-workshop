@@ -57,7 +57,6 @@
 			opacity 0
 			transform translate(-50%, -50%) scale(0.7)
 			transition opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
-			font-size 30px
 			a
 				vertical-align middle
 				font-family UniversLTPro-BoldCond, Impact

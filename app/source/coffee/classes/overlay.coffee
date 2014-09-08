@@ -12,7 +12,7 @@ class window.OverlayHandler
 			@gotoSection(0)
 			setTimeout(()=>
 				@gotoSection(1)
-			, 300)
+			, 1300)
 			@initPositions()
 		else @gotoSection 5
 
@@ -39,10 +39,10 @@ class window.OverlayHandler
 				document.getElementById("aboutCaption").hide()
 				document.getElementById("logo").addClass("blackFont")
 			when 1 # about text with loader 
-				@map.element.style.top = - @map.element.offsetHeight+"px";
-				@title.element.style.top = - @title.element.offsetWidth+"px";
-				@map.element.style.opacity = 0;
-				@title.element.style.opacity = 0;
+				@map.element.style.top = - @map.element.offsetHeight+"px"
+				@title.element.style.top = - @title.element.offsetWidth+"px"
+				@map.element.style.opacity = 0
+				@title.element.style.opacity = 0
 				document.getElementById("logo").show()
 				document.getElementById("aboutContent").show()
 				document.getElementById("aboutCaption").show()
@@ -127,6 +127,11 @@ class window.OverlayHandler
 	nextParticle: ()=>
 		nextId = if @currentParticle<dataJson.images.length-1 then @currentParticle+1 else 0
 		@showParticle nextId
+	updateDefaultPos :()=>
+		@title.updateOffset()
+		@map.updateOffset()
+		@aboutContent.updateOffset()
+		@aboutCaption.updateOffset()
 
 class flatParticle
 	constructor: (angleAmplitude, angleOffset) ->
@@ -147,8 +152,6 @@ class flatParticle
 			@element.style.opacity = 0.9
 			@wiggle()
 			@animate()
-			@offsetX = -@element.offsetWidth/2
-			@offsetY = -@element.offsetHeight/2
 		, 1
 		setTimeout ()=>
 			@isIntro = false
@@ -159,7 +162,9 @@ class flatParticle
 		@targetPosRefAngle += Math.random()*Math.PI/2 - Math.random()*Math.PI/4
 		if Math.random() > 0.5 then @targetAngle = @angleOffset-@angleAmplitude else @targetAngle = @angleOffset+@angleAmplitude
 		if @doAnimate then setTimeout(@wiggle, wiggleSpeed)
-
+	updateOffset: ()=>
+		@offsetX = -@element.offsetWidth/2
+		@offsetY = -@element.offsetHeight/2
 	animate : () =>
 		if counter > 0 then counter-= 5
 		targetX = @offsetX + Math.cos(@targetPosRefAngle) * wiggleDistance
