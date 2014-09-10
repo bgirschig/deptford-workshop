@@ -11,8 +11,16 @@ theRed = #dd223c
 		letter-spacing 7px
 		width 650px
 		opacity 0
+		-webkit-transform scale(0.1)
+		-moz-transform scale(0.1)
+		-ms-transform scale(0.1)
+		-o-transform scale(0.1)
 		transform scale(0.1)
-		transition opacity 0.5s, transform 0.6s, bottom 0.3s, top 2s ease-in
+		-webkit-transition:opacity 0.5s, transform 0.6s, bottom 0.3s, top 2s ease-in;
+		-moz-transition:opacity 0.5s, transform 0.6s, bottom 0.3s, top 2s ease-in;
+		-o-transition:opacity 0.5s, transform 0.6s, bottom 0.3s, top 2s ease-in;
+		transition:opacity 0.5s, transform 0.6s, bottom 0.3s, top 2s ease-in;
+
 	.blackFont
 		color black
 	.whiteFont
@@ -28,30 +36,49 @@ theRed = #dd223c
 		position absolute
 		top 40%
 		left 0
-		transition top 0.8s
+		-webkit-transition:top 0.8s
+		-moz-transition:top 0.8s
+		-o-transition:top 0.8s
+		transition:top 0.8s
 	#logo
 		font-size 25px
 		width 190px
 		padding 8px
-		margin: 1% auto;
+		margin-left auto
+		margin-right auto
 		&.left
 			margin 1%
 	#centerMap
 		width 100%
 		position absolute
 		top 50%
-		transition top 0.8s
+		-webkit-transition:top 0.8s
+		-moz-transition:top 0.8s
+		-o-transition:top 0.8s
+		transition:top 0.8s
 		#map
 			height 80%
+			-webkit-transform scale(0.5)
+			-moz-transform scale(0.5)
+			-ms-transform scale(0.5)
+			-o-transform scale(0.5)
 			transform scale(0.5)
 			opacity 0.3
-			transition opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in
+			-webkit-transition:opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in;
+			-moz-transition:opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in;
+			-o-transition:opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in;
+			transition:opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in;
+
 	#cta
 		font-size 15px
 		letter-spacing 1px
 		padding 8px
 		display inline-block
 		border 2px solid black
+		color black
+		&:hover
+			background-color white
+			border-color transparent
 	#miniMenu
 		position: fixed
 		top 0; right 0
@@ -59,31 +86,53 @@ theRed = #dd223c
 		#closeOverlay
 			background-image: url("../assets/ui/closeWhite.svg")
 		#twitterBtn
-			color white
-			font-size 25px
+			text-shadow 1px 1px rgb(187, 187, 187)
+			color #abacad
+			font-size 30px
 			margin-right 13px
-	
+			&:hover
+				background transparent
 		text-align center
 	#about
 		left 0
 		text-align center
-		transform: translate(0,-50%)
+		-webkit-transform translate(0, -50%)
+		-moz-transform translate(0, -50%)
+		-ms-transform translate(0, -50%)
+		-o-transform translate(0, -50%)
+		transform translate(0, -50%)
 		position: absolute
-		top: 40%
+		top: 45%
 		#aboutContent
 			opacity 0
+			-webkit-transform scale(0.7)
+			-moz-transform scale(0.7)
+			-ms-transform scale(0.7)
+			-o-transform scale(0.7)
 			transform scale(0.7)
-			transition opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+
+			-webkit-transition:opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			-moz-transition:opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			-o-transition:opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			transition:opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+
 			a
 				vertical-align middle
 				font-family UniversLTPro-BoldCond, Impact
 				font-size 11px
 				letter-spacing 0.9px
 				border thin solid theRed
-				padding 7px 4px 4px 4px
+				padding 9px 4px 4px 4px
 		#aboutCaption
 			margin-top 3%
+			-webkit-transform scale(0.7)
+			-moz-transform scale(0.7)
+			-ms-transform scale(0.7)
+			-o-transform scale(0.7)
 			transform scale(0.7)
-			transition opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			-webkit-transition:opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			-moz-transition:opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			-o-transition:opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
+			transition:opacity 2s, transform 0.6s, bottom 0.3s, top 1s ease-in
 			font-size 12px
 

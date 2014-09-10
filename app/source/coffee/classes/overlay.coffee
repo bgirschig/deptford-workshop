@@ -4,7 +4,7 @@ wiggleSmooth = 50
 class window.OverlayHandler
 	constructor: () ->
 		@checkMode(false)
-		if window.innerWidth>1000
+		if window.innerWidth>500 && window.innerHeight > 600
 			document.getElementById("overlay").removeClass("fixMode")
 			document.getElementById("overlay").addClass("floatMode")
 		else
@@ -19,14 +19,13 @@ class window.OverlayHandler
 			@gotoSection(0)
 			setTimeout(()=>
 				@gotoSection(1)
-			, 1500)
+			, 3500)
 			@initPositions()
 		else @gotoSection 5
-
 		document.getElementById("arrowNext").addEventListener("click", @nextParticle)
 		document.getElementById("arrowPrev").addEventListener("click", @prevParticle)
 	checkMode: (playPause=true)->
-		if window.innerWidth<1000
+		if window.innerWidth<500 || window.innerHeight < 600
 			@floatMode = "fixMode"
 			document.getElementById("overlay").addClass("fixMode")
 			document.getElementById("overlay").removeClass("floatMode")
@@ -35,9 +34,9 @@ class window.OverlayHandler
 				@map.doAnimate = false
 				@aboutContent.doAnimate = false
 				@aboutCaption.doAnimate = false
-			
-			document.getElementById("logo").addClass("whiteFont")
-			document.getElementById("logo").removeClass("blackFont")
+			if @currentSection >= 3
+				document.getElementById("logo").addClass("whiteFont")
+				document.getElementById("logo").removeClass("blackFont")
 		else
 			@floatMode = "floatMode"
 			document.getElementById("overlay").removeClass("fixMode")
@@ -88,38 +87,46 @@ class window.OverlayHandler
 			when 2 # about text with "continue" button
 				document.getElementById("loader").hide()
 				document.getElementById("cta").show()
-				if !Settings.sceneStarted
+				if scene? && scene.threeOk && !Settings.sceneStarted
 					scene.update()
 					Settings.sceneStarted = true
 			when 3 # 3d view
-				if !@waitTransition
-					document.getElementById("logo").addClass("left")
-					document.getElementById("threeCanvas").show()
-					document.getElementById("overlay").style.opacity = 0
-					scene.displayed = true
-					
-					@waitTransition = true
-					setTimeout ()=>
-						SoundHandler.gainNode.gain.value = 1
-						@waitTransition = false
-						document.getElementById("overlay").hide()
-						if @floatMode
-							@aboutContent.doAnimate = false
-							@aboutCaption.doAnimate = false
-					,300
+				if(scene? && scene.threeOk)
+					if !@waitTransition
+						document.getElementById("logo").addClass("left")
+						document.getElementById("twitterBtn").style.color = "white"
+						document.getElementById("threeCanvas").show()
+						document.getElementById("overlay").style.opacity = 0
+						scene.displayed = true
+						
+						@waitTransition = true
+						setTimeout ()=>
+							SoundHandler.gainNode.gain.value = 1
+							@waitTransition = false
+							document.getElementById("overlay").hide()
+							if @floatMode
+								@aboutContent.doAnimate = false
+								@aboutCaption.doAnimate = false
+						,300
 
-					document.getElementById("cta").hide()
-					document.getElementById("miniMenu").show()
-			when 4 # particleViewer desktop
+						document.getElementById("cta").hide()
+						document.getElementById("miniMenu").show()
+				else if(@currentSection==4)
+					if @floatMode then overlayHandler.gotoSection 2
+					else overlayHandler.gotoSection 5
+				else
+					@gotoSection 4
+			when 4 # particleViewer
 				document.getElementById("map").hide()
+				document.getElementById("closeOverlay").show()
 				if !@waitTransition
 					if !@currentParticle? then @showParticle(0)
 					document.getElementById("aboutContent").hide()
 					document.getElementById("aboutCaption").hide()
 					if @floatMode
 						document.getElementById("logo").addClass("whiteFont")
-						document.getElementById("logo").removeClass("blackFont")
-					document.getElementById("overlay").style.backgroundImage = 'url("assets/backgroundDark.jpg")';
+					document.getElementById("logo").removeClass("blackFont")
+					document.getElementById("overlay").style.backgroundImage = 'url("assets/backgroundDarkS.jpg")';
 					document.getElementById("overlay").show()
 					
 					@waitTransition = true
@@ -128,7 +135,7 @@ class window.OverlayHandler
 						document.getElementById("overlay").style.opacity = 1
 					,10
 					document.getElementById('particleViewer').show()
-					scene.displayed = false
+					if(scene?) then scene.displayed = false
 
 			when 5 #mobile about
 				document.getElementById("logo").show()
@@ -192,5 +199,7 @@ class flatParticle
 			@y += (targetY - @y) / wiggleSmooth
 			@angle += (@targetAngle - @angle) / wiggleSmooth
 			@element.style.webkitTransform = "translate("+(@x)+"px, "+(@offsetY+@y)+"px) rotate("+@angle+"deg) scale(1)"
+			@element.style.MozTransform = "translate("+(@x)+"px, "+(@offsetY+@y)+"px) rotate("+@angle+"deg) scale(1)"
+			@element.style.Transform = "translate("+(@x)+"px, "+(@offsetY+@y)+"px) rotate("+@angle+"deg) scale(1)"
 			setTimeout(@animate, 50)
 

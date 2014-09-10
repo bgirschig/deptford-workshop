@@ -5,7 +5,7 @@ window.Settings = {
 	unlockCamAxis: false
 
 	# counts
-	particlesCount: 2500
+	particlesCount: 25
 	soundParticlesCount: 2
 	
 	# forces

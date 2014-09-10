@@ -6,4 +6,12 @@ init = ()->
 
 Utils.loadJson( 'assets/data.json', init);
 
-window.	overlayHandler = new OverlayHandler()
+bg = new Image()
+
+bg.onload = ()->
+	document.getElementById("overlay").style.opacity = 1
+	setTimeout ()->
+		window.overlayHandler = new OverlayHandler()
+	,200
+	
+bg.src = "assets/backgroundLightS.jpg"

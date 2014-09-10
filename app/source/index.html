@@ -1,6 +1,14 @@
 <html>
 <head>
 	<title>Deptford, rising</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="minimal-ui">
+	<meta name="description" content="the result of the worksop at registration school in deptford, by marc kremmers">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=0" />
+	
+	<link rel="icon"type="image/png"href="assets/ui/fav.png">
 	<link rel="stylesheet" href="assets/webfonts/font-awesome-4.2.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/MyFontsWebfontsKit.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -13,7 +21,7 @@
 	<div id="overlay" class="fullscreen fixMode">
 		<div id="centerMap"><img id="map" src="assets/ui/map.png" class="floating"/></div>
 		<div id="centerTitle"><h1 id="title" class="serif floating">Deptford<i class="red">, </i>Rising</h1></div>
-		<div id="logo" class="serif">
+		<div id="logo" class="serif hide">
 			Deptford<i class="red">, </i>Rising
 			<div id="loaderCta">
 				<div id="loader" class="noSerif"><img src="assets/ui/loader.png"/><i id="loaderValue">3000</i> / <i id="loaderTotal">3000</i></div>
@@ -34,8 +42,8 @@
 			<div id="arrowPrev" class="arrow pointer"><i class="fa fa-angle-left"></i></div>
 			<img id="viewerImg" src="">
 			<div id="viewerInfo">
-				<a href="#" id="streetviewLink" class="noSerif" target="_blank"><i class="fa fa-child"></i>STREETVIEW</a>
-				<div id="viewerCaption">this image of a <i id="viewerDataTitle"></i> was taken in deptford SE8 and added to the internet by <a id="viewerDataName" href="#" target="_blank"></a></div>
+				<a href="#" id="streetviewLink" class="noSerif" target="_blank"><i class="fa fa-child"></i><i class="underline">STREETVIEW</i></a>
+				<div id="viewerCaption">This image of a <i id="viewerDataTitle"></i> was taken in deptford SE8 and added to the internet by <a id="viewerDataName" href="#" target="_blank"></a></div>
 			</div>
 		</div>
 		<div id="miniMenu" class="hide">
@@ -43,6 +51,7 @@
 			<span id="closeOverlay" class="cta pointer"></span>
 		</div>
 	</div>
+	<script src="script/librairies/analytics.js"></script>
 	<script src="script/librairies/three.min.js"></script>
 	<script src="script/librairies/noise.js"></script>
 	<script type="text/javascript" src="script/classes.js"></script>
