@@ -52,13 +52,20 @@ i{font-style: normal}
 			letter-spacing 1px
 			margin 13px 0 12px 0
 			line-height 120%
-			opacity 0.6
+			color rgba(255,255,255,0.6)
+			a:hover
+				background none
+				color white
 		#streetviewLink
 			.underline
 				border-bottom 1px solid white
+				&:hover
+					border-bottom none
 			letter-spacing 1.7
 			font-size 22px
-			i
+			.fa
+				bottom 2px
+				position relative
 				margin-right 5
 			&:hover
 				background none
@@ -72,6 +79,7 @@ i{font-style: normal}
 			transform translate(0, -50%)
 			top: 50%
 			margin: 0 30 0 30
+
 		#arrowNext
 			right 0
 		#arrowPrev
@@ -89,6 +97,8 @@ a
 	&:hover
 		background white
 		border-color transparent!important
+.alphaHover:hover
+	opacity: 0.6
 #threeCanvas
 	z-index -1
 .pointer:hover

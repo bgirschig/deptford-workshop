@@ -29,7 +29,7 @@ class window.OverlayHandler
 			@floatMode = "fixMode"
 			document.getElementById("overlay").addClass("fixMode")
 			document.getElementById("overlay").removeClass("floatMode")
-			if playPause	
+			if playPause && @title?
 				@title.doAnimate = false
 				@map.doAnimate = false
 				@aboutContent.doAnimate = false
