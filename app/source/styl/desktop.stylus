@@ -70,9 +70,9 @@ theRed = #dd223c
 			transition:opacity 0.5s, transform 0.3s, bottom 0.3s, top 2s ease-in;
 
 	#cta
-		font-size 15px
+		font-size 25px
 		letter-spacing 1px
-		padding 8px
+		padding 10px 8px 8px 10px
 		display inline-block
 		border 2px solid black
 		color black
@@ -86,7 +86,6 @@ theRed = #dd223c
 		#closeOverlay
 			background-image: url("../assets/ui/closeWhite.svg")
 		#twitterBtn
-			text-shadow 1px 1px rgb(187, 187, 187)
 			color #abacad
 			font-size 30px
 			margin-right 13px
@@ -122,7 +121,7 @@ theRed = #dd223c
 				font-size 11px
 				letter-spacing 0.9px
 				border thin solid theRed
-				padding 9px 4px 4px 4px
+				padding 9px 4px 4px 8px
 		#aboutCaption
 			margin-top 3%
 			-webkit-transform scale(0.7)

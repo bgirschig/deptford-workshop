@@ -5,7 +5,7 @@ window.Settings = {
 	unlockCamAxis: false
 
 	# counts
-	particlesCount: 25
+	particlesCount: 2000
 	soundParticlesCount: 2
 	
 	# forces
@@ -27,11 +27,11 @@ window.Settings = {
 
 	# environment
 	skybox: true
-	ambientLightColor: 0xBBBBBB
+	ambientLightColor: 0xFF0000
 	
 	#fog
-	fogDensity: 0.015
-	fogColor: 0xaaaaaa
+	fogDensity: 0.016
+	fogColor: 0x62666a
 
 	# optimisation
 	ratioSimplification: 1

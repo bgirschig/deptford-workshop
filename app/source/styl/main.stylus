@@ -29,7 +29,15 @@ i{font-style: normal}
 			-ms-animation:spin 2s infinite linear;
 			-o-animation:spin 2s infinite linear;
 			animation:spin 2s infinite linear;
+	#back
+		position relative
+		z-index 2
+		
 	#particleViewer
+		-webkit-transition opacity 0.3s
+		-moz-transition opacity 0.3s
+		-o-transition opacity 0.3s
+		transition opacity 0.3s
 		img
 			max-height 60%
 			max-width 70%
@@ -97,6 +105,8 @@ a
 	&:hover
 		background white
 		border-color transparent!important
+.preloadFont
+	visibility hidden
 .alphaHover:hover
 	opacity: 0.6
 #threeCanvas
@@ -156,6 +166,14 @@ a
 		#logo
 			margin-top 40px
 
+@media (max-height:1060px) and (min-height:690px) and (max-width:800px) and (min-width:650px)
+	#about
+		font-size 25px
+@media (max-height:690px) and (max-width:800px) and (min-width:650px)
+	#about
+		font-size 20px
+		a
+			padding 3px 1px 1px 2px !important
 @-webkit-keyframes spin
 {
     0% {-webkit-transform:rotate(0deg);}

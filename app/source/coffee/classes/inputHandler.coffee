@@ -68,3 +68,8 @@ shorcutHandler = (e)->
 		when 32 # space
 			overlayHandler.gotoSection(4)
 window.addEventListener("keyup", shorcutHandler)
+
+document.getElementById("back").addEventListener("click", ()->
+	if overlayHandler.currentSection == 4
+		overlayHandler.gotoSection(6)
+)

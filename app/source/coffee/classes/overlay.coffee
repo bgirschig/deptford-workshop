@@ -4,7 +4,7 @@ wiggleSmooth = 50
 class window.OverlayHandler
 	constructor: () ->
 		@checkMode(false)
-		if window.innerWidth>500 && window.innerHeight > 600
+		if window.innerWidth>650 && window.innerHeight > 600
 			document.getElementById("overlay").removeClass("fixMode")
 			document.getElementById("overlay").addClass("floatMode")
 		else
@@ -13,6 +13,7 @@ class window.OverlayHandler
 
 		@waitTransition = false
 		@floatMode = document.getElementById("overlay").className.indexOf("floatMode") != -1
+		@backToAbout = false
 		@currentSection
 
 		if(@floatMode)
@@ -25,7 +26,7 @@ class window.OverlayHandler
 		document.getElementById("arrowNext").addEventListener("click", @nextParticle)
 		document.getElementById("arrowPrev").addEventListener("click", @prevParticle)
 	checkMode: (playPause=true)->
-		if window.innerWidth<500 || window.innerHeight < 600
+		if window.innerWidth<650 || window.innerHeight < 600
 			@floatMode = "fixMode"
 			document.getElementById("overlay").addClass("fixMode")
 			document.getElementById("overlay").removeClass("floatMode")
@@ -91,6 +92,7 @@ class window.OverlayHandler
 					scene.update()
 					Settings.sceneStarted = true
 			when 3 # 3d view
+				document.getElementById("overlay").style.backgroundImage = 'url("assets/backgroundDarkS.jpg")';
 				if(scene? && scene.threeOk)
 					if !@waitTransition
 						document.getElementById("logo").addClass("left")
@@ -126,7 +128,6 @@ class window.OverlayHandler
 					if @floatMode
 						document.getElementById("logo").addClass("whiteFont")
 					document.getElementById("logo").removeClass("blackFont")
-					document.getElementById("overlay").style.backgroundImage = 'url("assets/backgroundDarkS.jpg")';
 					document.getElementById("overlay").show()
 					
 					@waitTransition = true
@@ -135,6 +136,7 @@ class window.OverlayHandler
 						document.getElementById("overlay").style.opacity = 1
 					,10
 					document.getElementById('particleViewer').show()
+					document.getElementById('particleViewer').style.opacity = 1
 					if(scene?) then scene.displayed = false
 
 			when 5 #mobile about
@@ -142,6 +144,16 @@ class window.OverlayHandler
 				document.getElementById("loader").show()
 				document.getElementById("aboutContent").show()
 				document.getElementById("aboutCaption").show()
+			when 6
+				document.getElementById("particleViewer").style.opacity = 0
+				setTimeout ()->
+					document.getElementById('particleViewer').hide()
+				,300
+				document.getElementById("logo").show()
+				document.getElementById("aboutContent").show()
+				document.getElementById("aboutCaption").show()
+				document.getElementById("overlay").style.backgroundImage = 'url("assets/backgroundLightS.jpg")';
+
 	showParticle: (particleRef) ->
 		@currentParticle = particleRef
 		@gotoSection(4)
