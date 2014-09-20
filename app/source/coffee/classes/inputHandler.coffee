@@ -25,19 +25,19 @@ onDocumentMouseDown = (e) ->
 
 # only for orientation with sensors
 setOrientation = (e) ->
-	document.removeEventListener( 'mousemove', updateMouse, false )
-	document.removeEventListener( 'mousedown', onDocumentMouseDown, false )
-	alpha = e.alpha
-	# scene.particleSystem.targetRotation = -e.alpha/180*Math.PI
+	scene.skyRot.update(e.alpha);
 
 # recieves a null event if there are no sensors.
 initOrientation = (e) ->
 	window.removeEventListener("deviceorientation", initOrientation, false)
 	if e.alpha != null
-		document.addEventListener('mousemove', updateMouse, false)
-		document.addEventListener( 'mousedown', onDocumentMouseDown, false )
+		document.removeEventListener('mousemove', updateMouse, false)
+		document.removeEventListener( 'mousedown', onDocumentMouseDown, false )
 		window.addEventListener("deviceorientation", setOrientation, false)
+		window.hasGyro = true;
 
+document.addEventListener("touchstart", ()->
+);
 window.addEventListener("deviceorientation", initOrientation, false)
 document.addEventListener('mousemove', updateMouse, false)
 document.addEventListener( 'mousedown', onDocumentMouseDown, false )

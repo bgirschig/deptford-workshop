@@ -5,8 +5,8 @@ window.Settings = {
 	unlockCamAxis: false
 
 	# counts
-	particlesCount: 2000
-	soundParticlesCount: 2
+	particlesCount: 500
+	soundParticlesCount: 0
 	
 	# forces
 	gravity: new THREE.Vector3(0, 0.0015 ,0)

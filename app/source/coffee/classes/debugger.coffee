@@ -1,6 +1,6 @@
 window.Debugger = {
 	testCube: (s=1) ->
-		material = new THREE.MeshLambertMaterial {map: THREE.ImageUtils.loadTexture 'assets/testPattern.png' }
+		material = new THREE.MeshLambertMaterial {map: THREE.ImageUtils.loadTexture 'assets/objectImages/defaultTexture.png' }
 		geometry = new THREE.BoxGeometry s,s,s
 		geometry = new THREE.PlaneGeometry(s, s)
 		return new THREE.Mesh geometry, material

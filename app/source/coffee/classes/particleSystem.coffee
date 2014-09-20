@@ -5,7 +5,6 @@ class window.ParticleSystem extends THREE.Object3D
 		setTimeout(@addParticle, 50)
 			
 		if Settings.debug then @add Debugger.axes(6, 0xFF00FF)
-
 	update:()=>
 		p.update() for p in @particles
 

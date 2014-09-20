@@ -25,10 +25,14 @@ class window.Scene
 
 		# creating the particleSystem
 		@particleSystem = new ParticleSystem(Settings.particlesCount, Settings.soundParticlesCount)
+
 		@scene.add @particleSystem
 		if Settings.skybox
 			@skybox = createSkybox()
 			@particleSystem.add @skybox
+
+		@skyRot = new MetaAngle(360);
+
 		# catch e
 		# 	alert("This website uses a whole bunch of webGl, but your browser does not seem to support it.\n Please note that this experience will not work on ios")
 		# 	@threeOk = false
@@ -40,11 +44,11 @@ class window.Scene
 		if(scene.displayed)
 			@particleSystem.update()
 
-			# cam movements
-			if @particleSystem.targetRotation
-				@particleSystem.rotation.y += (@particleSystem.targetRotation-@particleSystem.rotation.y)/10
+			@skyRot.update();
 			
-			@particleSystem.rotation.y += (mouse.x/window.innerWidth - 0.5)/30
+			if(!hasGyro) then @particleSystem.rotation.y += (mouse.x/window.innerWidth - 0.5)/30
+			else @particleSystem.rotation.y = -@skyRot.smoothedLinearAngle*degToRad;
+
 			if Settings.unlockCamAxis then @particleSystem.rotation.x += (mouse.y/window.innerHeight - 0.5)/30
 
 			@renderer.render @scene, @camera
