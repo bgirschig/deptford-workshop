@@ -26,10 +26,9 @@ class window.Scene
 		# creating the particleSystem
 		@particleSystem = new ParticleSystem(Settings.particlesCount, Settings.soundParticlesCount)
 
-		@scene.add @particleSystem
 		if Settings.skybox
 			@skybox = createSkybox()
-			@particleSystem.add @skybox
+			@scene.add @skybox
 
 		@skyRot = new MetaAngle(360);
 
@@ -45,11 +44,12 @@ class window.Scene
 			@particleSystem.update()
 
 			@skyRot.update();
-			
-			if(!hasGyro) then @particleSystem.rotation.y += (mouse.x/window.innerWidth - 0.5)/30
-			else @particleSystem.rotation.y = -@skyRot.smoothedLinearAngle*degToRad;
+			if(!hasGyro) then @camera.rotation.y -= (mouse.x/window.innerWidth - 0.5)/30
+			else
+				@camera.rotation.y = @skyRot.smoothedLinearAngle*degToRad;
+				console.log @camera.rotation.y;
 
-			if Settings.unlockCamAxis then @particleSystem.rotation.x += (mouse.y/window.innerHeight - 0.5)/30
-
+			if Settings.unlockCamAxis then @camera.rotation.x -= (mouse.y/window.innerHeight - 0.5)/30
 			@renderer.render @scene, @camera
 		requestAnimationFrame @update
+		setTimeout(@update, 25);

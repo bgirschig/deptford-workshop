@@ -15,17 +15,19 @@ class window.ImageParticle extends Particle
 		})
 		material.side = THREE.DoubleSide
 
-		plane = new THREE.Mesh ImageParticle.geometries, material
+		@plane = new THREE.Mesh ImageParticle.geometries, material
 
-		plane.scale.x = dataJson.images[@particleReference].size
-		plane.scale.y = dataJson.images[@particleReference].size*dataJson.images[@particleReference].ratio
+		@plane.scale.x = dataJson.images[@particleReference].size
+		@plane.scale.y = dataJson.images[@particleReference].size*dataJson.images[@particleReference].ratio
+		@plane.position.set(0,0,-20+@particleReference);
+		scene.scene.add @plane
 
-		@add plane
-		plane.particleReference = @particleReference
-		scene.clickable.push(plane)
+		@plane.particleReference = @particleReference
+		scene.clickable.push(@plane)
 
-		this.rotation.set Math.random()*10,Math.random()*10,Math.random()*10
+		@plane.rotation.set(Math.random()*10,Math.random()*10,Math.random()*10, "XYZ");
 
 	update: =>
 		@updatePos()
-		@rotation.y -= 0.0075
+		@plane.position.set(@position.x, @position.y, @position.z)
+		@plane.rotation.y -= 0.0075

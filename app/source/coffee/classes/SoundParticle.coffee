@@ -29,8 +29,8 @@ class window.SoundParticle extends Particle
 
 	update: =>
 		pos = new THREE.Vector3()
-		pos.setFromMatrixPosition(@matrixWorld)
-		if @sound then @sound.panner.setPosition(pos.x*Settings.soundPropagation, pos.z*Settings.soundPropagation ,pos.y*Settings.soundPropagation)
+		# pos.setFromMatrixPosition(@matrixWorld)
+		if @sound then @sound.panner.setPosition(0, 0, @position.y*Settings.soundPropagation)
 		@updatePos()
 	onError: (e) =>
 		console.log "an error occured while decoding a sound"

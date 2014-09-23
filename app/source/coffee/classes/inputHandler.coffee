@@ -1,9 +1,23 @@
-window.mouse = {x: window.innerWidth/2, y: window.innerHeight/2}
+window.mouse
+window.hasGyro
+
+initInputs = () ->
+	window.mouse = {x: window.innerWidth/2, y: window.innerHeight/2}
+	window.hasGyro = false;
+	ctas = document.getElementsByClassName("cta")
+
+	window.addEventListener("deviceorientation", initOrientation, false)
+	document.addEventListener('mousemove', updateMouse, false)
+	document.addEventListener( 'mousedown', onDocumentMouseDown, false )
+	window.addEventListener("keyup", shorcutHandler)
+	document.getElementById("back").addEventListener("click", onBack)
+	for cta in ctas
+		cta.addEventListener("click", onCta, false)
 
 # ...
 updateMouse = (e) ->
-	mouse.x = e.clientX
-	mouse.y = e.clientY
+	window.mouse.x = e.clientX
+	window.mouse.y = e.clientY
 
 # click on a particle
 onDocumentMouseDown = (e) ->
@@ -36,18 +50,6 @@ initOrientation = (e) ->
 		window.addEventListener("deviceorientation", setOrientation, false)
 		window.hasGyro = true;
 
-document.addEventListener("touchstart", ()->
-);
-window.addEventListener("deviceorientation", initOrientation, false)
-document.addEventListener('mousemove', updateMouse, false)
-document.addEventListener( 'mousedown', onDocumentMouseDown, false )
-
-ctas = document.getElementsByClassName("cta")
-for cta in ctas
-	cta.addEventListener("click", ()->
-		overlayHandler.gotoSection(3)
-	, false)
-
 # adjust viewport when window is resized
 onWindowResize = ()->
     scene.camera.aspect = window.innerWidth / window.innerHeight;
@@ -67,9 +69,10 @@ shorcutHandler = (e)->
 			overlayHandler.gotoSection(3)
 		when 32 # space
 			overlayHandler.gotoSection(4)
-window.addEventListener("keyup", shorcutHandler)
 
-document.getElementById("back").addEventListener("click", ()->
-	if overlayHandler.currentSection == 4
-		overlayHandler.gotoSection(6)
-)
+onCta = ()->
+	overlayHandler.gotoSection(3)
+onBack = ()->
+	if overlayHandler.currentSection == 4 then overlayHandler.gotoSection(6)
+
+initInputs();

@@ -20,7 +20,7 @@ class window.OverlayHandler
 			@gotoSection(0)
 			setTimeout(()=>
 				@gotoSection(1)
-			, 3500)
+			, 2500)
 			@initPositions()
 		else @gotoSection 5
 		document.getElementById("arrowNext").addEventListener("click", @nextParticle)
@@ -88,9 +88,9 @@ class window.OverlayHandler
 			when 2 # about text with "continue" button
 				document.getElementById("loader").hide()
 				document.getElementById("cta").show()
-				if scene? && scene.threeOk && !Settings.sceneStarted
-					scene.update()
-					Settings.sceneStarted = true
+				# if scene? && scene.threeOk && !Settings.sceneStarted
+					# scene.update()
+					# Settings.sceneStarted = true
 			when 3 # 3d view
 				document.getElementById("overlay").style.backgroundImage = 'url("assets/backgroundDarkS.jpg")';
 				if(scene? && scene.threeOk)

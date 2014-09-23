@@ -1,6 +1,5 @@
-class window.ParticleSystem extends THREE.Object3D
+class window.ParticleSystem
 	constructor : (@count, @soundCount) ->
-		super
 		@particles = []
 		setTimeout(@addParticle, 50)
 			
@@ -12,11 +11,9 @@ class window.ParticleSystem extends THREE.Object3D
 		if @count > 0
 			p = new ImageParticle()
 			@particles.push p
-			@add p
 			@count--
 		if @soundCount > 0
 			p = new SoundParticle()
-			@add p
 			@particles.push p
 			@soundCount--
 

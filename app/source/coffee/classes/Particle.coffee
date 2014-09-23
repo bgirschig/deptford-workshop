@@ -1,15 +1,15 @@
-class window.Particle extends THREE.Object3D
+class window.Particle
 	@zeroVector = new THREE.Vector3(0,0,0)
 
-	constructor: (x,y,z, debugColor) ->
-		super
-		Particle.randomisePos(@)
-
+	constructor: (x,y,z) ->
+		@position = new THREE.Vector3(x,y,z)
 		@speed = new THREE.Vector3(0,0,0)
 		@drag = new THREE.Vector3(0,0,0)
 		@acceleration = new THREE.Vector3(0,0,0)
-		if Settings.debug then @add Debugger.axes(1, debugColor)
-	updatePos: =>
+		
+		Particle.randomisePos(@)
+
+	updatePos: (element)=>
 		d = @position.distanceTo Particle.zeroVector
 		if d > Settings.deletionDistance || d < Settings.vitalSpace then @reposition()		
 
@@ -30,7 +30,6 @@ class window.Particle extends THREE.Object3D
 
 		# reset acceleration for next pass
 		@acceleration.set(0,0,0)
-
 	reposition: () =>
 		Particle.randomisePos(@) #FIXME
 		@position.y = - 30
